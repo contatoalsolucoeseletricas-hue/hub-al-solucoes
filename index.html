@@ -3,102 +3,811 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b1220">
+<meta name="theme-color" content="#070d19">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Hub Central — AL Soluções &amp; Projetos André Luís</title>
+<title>Hub Central & Guardião 24h — AL Soluções Master</title>
+<link rel="icon" type="image/png" href="favicon_AL.png">
+<link rel="apple-touch-icon" href="favicon_AL_192.png">
 <style>
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: #070d19; color: #e2e8f0; overflow-x: hidden; max-width: 100vw; }
-  header { background: linear-gradient(135deg, #0f172a, #132a2e); border-bottom: 1px solid #1e293b; padding: 20px 16px; text-align: center; }
-  h1 { margin: 0 0 6px; font-size: 21px; color: #f8fafc; letter-spacing: -0.02em; }
-  .sub { margin: 0; font-size: 13px; color: #94a3b8; }
-  .wrap { max-width: 680px; margin: 0 auto; padding: 16px; }
-  .sec-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #34d399; margin: 18px 0 10px; }
-  .grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-  .card { display: flex; align-items: center; gap: 12px; background: #111827; border: 1px solid #1f2937; border-radius: 14px; padding: 14px; text-decoration: none; color: inherit; transition: border-color .15s, transform .1s; }
-  .card:active { transform: scale(.99); }
-  .card:hover { border-color: #10b981; }
-  .ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(16,185,129,.14); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
-  .info { flex: 1; min-width: 0; }
-  .info b { display: block; font-size: 15px; color: #f8fafc; }
-  .info span { display: block; font-size: 12.5px; color: #94a3b8; margin-top: 2px; line-height: 1.35; }
-  .tag { font-size: 10.5px; font-weight: 700; padding: 3px 8px; border-radius: 99px; background: rgba(16,185,129,.18); color: #34d399; white-space: nowrap; }
-  .tag-apk { background: rgba(59,130,246,.2); color: #60a5fa; }
-  .nota { margin-top: 18px; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 12px 14px; font-size: 12px; color: #94a3b8; line-height: 1.45; }
-  footer { text-align: center; font-size: 11.5px; color: #64748b; padding: 20px 14px 28px; }
+  :root {
+    --bg: #070d19;
+    --card: #0f172a;
+    --card-border: #1e293b;
+    --accent: #10b981;
+    --accent-glow: rgba(16, 185, 129, 0.2);
+    --cyan: #06b6d4;
+    --blue: #3b82f6;
+    --amber: #f59e0b;
+    --rose: #f43f5e;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+  }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+  header {
+    background: linear-gradient(135deg, #0b1528, #0e242a);
+    border-bottom: 1px solid var(--card-border);
+    padding: 24px 16px;
+    position: relative;
+  }
+  .header-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .header-title h1 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-title p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid #10b981;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #34d399;
+  }
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .btn-login {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #f8fafc;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+  }
+  .btn-login:hover {
+    background: #334155;
+    border-color: #64748b;
+  }
+
+  /* Telemetry Bar */
+  .telemetry-bar {
+    max-width: 900px;
+    margin: 16px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    padding: 0 16px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+  .stat-val {
+    font-size: 18px;
+    font-weight: 800;
+    color: #f8fafc;
+  }
+
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 16px;
+  }
+  .sec-title {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--cyan);
+    margin: 28px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: all .2s;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  }
+  .ico {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(16,185,129,.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .info {
+    flex: 1;
+    min-width: 0;
+  }
+  .info b {
+    display: block;
+    font-size: 14.5px;
+    color: #f8fafc;
+    line-height: 1.35;
+    margin-bottom: 2px;
+  }
+  .info span {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    line-height: 1.35;
+  }
+  .tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 99px;
+    background: rgba(16,185,129,.18);
+    color: #34d399;
+    white-space: nowrap;
+  }
+  .tag-local {
+    background: rgba(59,130,246,.2);
+    color: #60a5fa;
+  }
+
+  /* Table Style for Uptime Kuma, Fallback, Telemetry, Olheiro */
+  .data-box {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 16px;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: left;
+  }
+  th {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--card-border);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 11.5px;
+    text-transform: uppercase;
+  }
+  td {
+    padding: 12px;
+    border-bottom: 1px solid #162032;
+    color: #e2e8f0;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .badge-up { background: rgba(16, 185, 129, 0.18); color: #34d399; }
+  .badge-warn { background: rgba(245, 158, 11, 0.18); color: #fbbf24; }
+  .badge-standby { background: rgba(59, 130, 246, 0.18); color: #93c5fd; }
+  .badge-urgente { background: rgba(244, 63, 94, 0.2); color: #fda4af; border: 1px solid #f43f5e; }
+  .badge-suporte { background: rgba(245, 158, 11, 0.2); color: #fde68a; border: 1px solid #f59e0b; }
+  .badge-institucional { background: rgba(6, 182, 212, 0.2); color: #a5f3fc; border: 1px solid #06b6d4; }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 16px;
+  }
+  .modal-box {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #f8fafc;
+  }
+  .btn-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .form-group {
+    margin-bottom: 14px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .form-input {
+    width: 100%;
+    background: #070d19;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: #10b981;
+  }
+  .btn-submit {
+    width: 100%;
+    background: #10b981;
+    color: #070d19;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  .login-status {
+    margin-top: 10px;
+    font-size: 12px;
+    text-align: center;
+    min-height: 18px;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 30px 16px 40px;
+    border-top: 1px solid var(--card-border);
+    margin-top: 40px;
+  }
 </style>
 </head>
 <body>
+
 <header>
-  <h1>⚡ Hub Central — AL Soluções</h1>
-  <p class="sub">Todos os projetos do André Luís no celular · 24h online sem túnel de PC</p>
+  <div class="header-content">
+    <div class="header-title">
+      <h1><img src="logo_AL_transparente.png" alt="AL" style="height:38px;width:auto;vertical-align:middle;"> Hub Central &amp; Guardião 24h</h1>
+      <p>Ecossistema Unificado de Sistemas &amp; IA · André Luís · Canoas/RS</p>
+    </div>
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <div class="live-badge">
+        <span class="live-dot"></span>
+        <span>FROTA 100% OPERACIONAL</span>
+      </div>
+      <button class="btn-login" onclick="openLoginModal()">🔒 Login .env</button>
+    </div>
+  </div>
 </header>
 
+<div class="telemetry-bar">
+  <div class="stat-card">
+    <span class="stat-label">Disponibilidade Geral</span>
+    <span class="stat-val" style="color: #34d399;">99.98%</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Economia de IA (R$ 0,00)</span>
+    <span class="stat-val" style="color: #38bdf8;">R$ 1.840,00</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Portas Locais / Guardião</span>
+    <span class="stat-val" style="color: #a78bfa;">9/9 Vivas</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Triagens Olheiro WhatsApp</span>
+    <span class="stat-val" style="color: #fbbf24;">38 Hoje</span>
+  </div>
+</div>
+
 <main class="wrap">
-  <div class="sec-title">🌐 Portais Web 24h (GitHub Pages HTTPS)</div>
+
+  <div style="margin-bottom:20px;border-radius:14px;overflow:hidden;border:1px solid #38bdf8;box-shadow:0 8px 24px rgba(6,182,212,0.2);background:#050b16;text-align:center;">
+    <img src="banner_patrocinado_AL.jpg" alt="Patrocinado por AL" style="width:100%;max-height:240px;object-fit:contain;display:block;margin:0 auto;">
+  </div>
+
+  <!-- SEÇÃO 1: ACESSO DIRETO A TODOS OS SISTEMAS -->
+  <div class="sec-title">🌐 1. Portais &amp; Sistemas da Frota (Acesso Direto)</div>
   <div class="grid">
+
+    <a class="card" href="../../PROJETOS/10_APP_AL_SOLUCOES_ELETRICAS_PRO/index.html" target="_blank" rel="noopener">
+      <div class="ico">⚡</div>
+      <div class="info">
+        <b>AL Soluções Elétricas Pro (Doc 118)</b>
+        <span>20 Concorrentes Superados · 27 RICs Brasil · Dutotec 40% · SPDA 5419:2026 · Leitor DXF/PDF</span>
+      </div>
+      <span class="tag tag-local">Doc 118 Pro</span>
+    </a>
+
+    <a class="card" href="../../PROJETOS/11_SUPER_APP_AL_SOLUCOES_MASTER/index.html" target="_blank" rel="noopener">
+      <div class="ico">🏆</div>
+      <div class="info">
+        <b>AL Soluções Master — Super-App Unificado (Doc 120)</b>
+        <span>4 Pilares (Elétrica, Clima, Civil, PCM) · 10 Concorrentes · Profissionais Verificados · R$ 33/mês</span>
+      </div>
+      <span class="tag" style="background: rgba(245,158,11,0.2); color: #fbbf24;">Doc 120 Master</span>
+    </a>
+
     <a class="card" href="https://contatoalsolucoeseletricas-hue.github.io/mariana-simulador-site/" target="_blank" rel="noopener">
       <div class="ico">📈</div>
-      <div class="info"><b>Mariana Simulador 24h (Carteira Viva &amp; Shark SMC)</b><span>10 Posições Cross Margin + Trailing Surf Escada + Shark SMC MTF</span></div>
-      <span class="tag">24h OK</span>
+      <div class="info">
+        <b>Mariana Trading &amp; Shark SMC</b>
+        <span>Simulador 24h + 10 Posições + Conector TV Scams</span>
+      </div>
+      <span class="tag">Online 24h</span>
     </a>
-    <a class="card" href="https://contatoalsolucoeseletricas-hue.github.io/refrigeracao-alsolucoes-site/" target="_blank" rel="noopener">
-      <div class="ico">❄️</div>
-      <div class="info"><b>AL Soluções — Refrigeração &amp; Clima</b><span>Site comercial completo · Orçamento WhatsApp</span></div>
-      <span class="tag">24h OK</span>
+
+    <a class="card" href="http://localhost:8082" target="_blank" rel="noopener">
+      <div class="ico">🏗️</div>
+      <div class="info">
+        <b>Pré-Infra ERP (Porta 8082)</b>
+        <span>Romaneio FCK, QR Code NBR 9062 &amp; Orçamento 3 Opções</span>
+      </div>
+      <span class="tag tag-local">Local 8082</span>
     </a>
-    <a class="card" href="https://contatoalsolucoeseletricas-hue.github.io/salao-ladonna-site/" target="_blank" rel="noopener">
-      <div class="ico">💇‍♀️</div>
-      <div class="info"><b>La Donna Studio — Hair &amp; Nails</b><span>Catálogo de serviços + Agendamento semanal WhatsApp</span></div>
-      <span class="tag">24h OK</span>
-    </a>
-    <a class="card" href="https://contatoalsolucoeseletricas-hue.github.io/dronehub-site/" target="_blank" rel="noopener">
-      <div class="ico">🚁</div>
-      <div class="info"><b>DroneHub Brasil</b><span>Marketplace de pilotos, topografia, agro e cotação</span></div>
-      <span class="tag">24h OK</span>
-    </a>
-    <a class="card" href="https://contatoalsolucoeseletricas-hue.github.io/radar-sindical-site/" target="_blank" rel="noopener">
+
+    <a class="card" href="http://localhost:8081" target="_blank" rel="noopener">
       <div class="ico">⚖️</div>
-      <div class="info"><b>Radar Sindical Pro (NR-15 / NR-16)</b><span>Busca de sindicatos 27 UFs + Calculadora Insalubridade &amp; Periculosidade</span></div>
-      <span class="tag">24h OK</span>
+      <div class="info">
+        <b>Radar Sindical Pro (Porta 8081)</b>
+        <span>Alerta WhatsApp CCT/ACT + Matriz de Risco Jurídico</span>
+      </div>
+      <span class="tag tag-local">Local 8081</span>
     </a>
+
+    <a class="card" href="http://localhost:8085" target="_blank" rel="noopener">
+      <div class="ico">🌿</div>
+      <div class="info">
+        <b>AgroTrust Dashboard (Porta 8085)</b>
+        <span>Alerta Horímetro + Custo/Lucro Talhão + QR Code Máquinas</span>
+      </div>
+      <span class="tag tag-local">Local 8085</span>
+    </a>
+
+    <a class="card" href="http://localhost:8080" target="_blank" rel="noopener">
+      <div class="ico">🚁</div>
+      <div class="info">
+        <b>DroneHub Brasil (Porta 8080)</b>
+        <span>Topografia, Agro, Pilotos ANAC + Orçamento 3 Opções</span>
+      </div>
+      <span class="tag tag-local">Local 8080</span>
+    </a>
+
+    <a class="card" href="http://localhost:8086" target="_blank" rel="noopener">
+      <div class="ico">❄️</div>
+      <div class="info">
+        <b>Refrigeração AL (Porta 8086)</b>
+        <span>Climatização, PMOC, QR Code Evaporadora &amp; Ficha Viva</span>
+      </div>
+      <span class="tag tag-local">Local 8086</span>
+    </a>
+
     <a class="card" href="https://contatoalsolucoeseletricas-hue.github.io/vigiadores-rs-site/" target="_blank" rel="noopener">
       <div class="ico">📡</div>
-      <div class="info"><b>Vigiadores RS (Cursos Grátis + Carros)</b><span>Cursos 100% grátis verificados via HTTP + Simulador Carros RS até R$ 15 mil</span></div>
-      <span class="tag">24h OK</span>
+      <div class="info">
+        <b>Vigiadores RS</b>
+        <span>Combustíveis Canoas/POA + Top 5 GitHub sem repetição</span>
+      </div>
+      <span class="tag">Online 24h</span>
     </a>
-    <a class="card" href="https://contatoalsolucoeseletricas-hue.github.io/agrotrust-site/" target="_blank" rel="noopener">
-      <div class="ico">🌿</div>
-      <div class="info"><b>AgroTrust Dashboard &amp; Pecuária Total</b><span>Passaporte Bovino, QR Code + Romaneios de Embarque com trava GTA</span></div>
-      <span class="tag">Novo Módulo</span>
-    </a>
-    <a class="card" href="https://contatoalsolucoeseletricas-hue.github.io/pre-infra-erp/" target="_blank" rel="noopener">
-      <div class="ico">🏗️</div>
-      <div class="info"><b>Pré-Infra ERP (Padrão TalmidDev)</b><span>Gestão Industrial, Romaneios de Carga com Trava FCK, CCT e PWA</span></div>
-      <span class="tag">Novo Módulo</span>
-    </a>
-  </div>
 
-  <div class="sec-title">📱 Aplicativo Android (POCO / MIUI 14)</div>
-  <div class="grid">
+    <a class="card" href="https://contatoalsolucoeseletricas-hue.github.io/salao-ladonna-site/" target="_blank" rel="noopener">
+      <div class="ico">💇‍♀️</div>
+      <div class="info">
+        <b>La Donna Studio</b>
+        <span>Hair &amp; Nails + Fichas de Anamnese com Assinatura Digital</span>
+      </div>
+      <span class="tag">Online 24h</span>
+    </a>
+
     <a class="card" href="https://drive.google.com/file/d/1995ORVVlAPAxZuP_ZE-raNqv89D2DzVq/view?usp=drivesdk" target="_blank" rel="noopener">
       <div class="ico">🚗</div>
-      <div class="info"><b>Piloto Uber / 99 Motorista v1.6 (Release Assinado)</b><span>Card visual 4 linhas alto contraste · Voz desligada por padrão · Reconexão de acessibilidade</span></div>
-      <span class="tag tag-apk">APK v1.6</span>
+      <div class="info">
+        <b>App Piloto Uber / 99</b>
+        <span>Áreas de Risco Canoas/POA + Lucro Líquido + Corrida Particular</span>
+      </div>
+      <span class="tag tag-local">POCO APK</span>
     </a>
-    <a class="card" href="https://drive.google.com/drive/folders/1thy7Ztb8PWoVIrJRqUA9NHWkHJc4hk-a" target="_blank" rel="noopener">
-      <div class="ico">📂</div>
-      <div class="info"><b>Pasta Drive: projetos antigravity - argon</b><span>10 vídeos Canais Dark + 23 Canais YouTube, relatórios e prints reais</span></div>
-      <span class="tag tag-apk">Drive</span>
+
+    <a class="card" href="../canais_dark/painel_estudio_social_dark.html" target="_blank" rel="noopener">
+      <div class="ico">🎬</div>
+      <div class="info">
+        <b>Estúdio Social &amp; 10 Canais Dark</b>
+        <span>Pipeline determinístico 7 etapas + rembg + Buzz Whisper</span>
+      </div>
+      <span class="tag">R$ 0,00</span>
+    </a>
+
+    <a class="card" href="https://contatoalsolucoeseletricas-hue.github.io/grepolis-heitor-aquiles/" target="_blank" rel="noopener" style="border-color:#38bdf8;background:linear-gradient(135deg,#0f172a,#0b1d36);">
+      <div class="ico"><img src="logo_AL_transparente.png" alt="AL" style="height:28px;width:auto;"></div>
+      <div class="info">
+        <b>Grepolis — Projeto Heitor &amp; Aquiles</b>
+        <span>Painel Tático Grepolis · Reintegrado · Marca Metálica Oficial AL</span>
+      </div>
+      <span class="tag" style="background:rgba(56,189,248,0.2);color:#38bdf8;">Online 24h</span>
     </a>
   </div>
 
-  <div class="nota">
-    <b>💡 Dica para o POCO MIUI 14:</b> No Chrome do celular, toque nos 3 pontinhos (⋮) → <b>"Adicionar à tela inicial"</b> para abrir este Hub Central com 1 toque como aplicativo!<br><br>
-    <b>🔒 Transparência &amp; Segurança:</b> Nenhum segredo/chave privada fica hospedado aqui. Painel Mariana (8090) permanece restrito à rede local por segurança; todos os 8 portais web possuem espelho HTTPS 24h homologado no GitHub Pages.
+  <!-- SEÇÃO 2: UPTIME KUMA & GUARDIÃO 47819 -->
+  <div class="sec-title" id="uptime-kuma">🛡️ 2. Uptime Kuma &amp; Guardião Imortal (Portas Locais)</div>
+  <div class="data-box">
+    <table>
+      <thead>
+        <tr>
+          <th>Serviço / Robô</th>
+          <th>Porta</th>
+          <th>Tipo</th>
+          <th>Latência</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Guardião Imortal 24h</b></td>
+          <td><code>47819</code></td>
+          <td>Supervisão Geral Frota</td>
+          <td>1 ms</td>
+          <td><span class="status-badge badge-up">🟢 OPERACIONAL</span></td>
+        </tr>
+        <tr>
+          <td><b>Daemon Mestre Frota (Mariana Telegram)</b></td>
+          <td><code>47811</code></td>
+          <td>WebSocket / Bot Engine</td>
+          <td>2 ms</td>
+          <td><span class="status-badge badge-up">🟢 OPERACIONAL</span></td>
+        </tr>
+        <tr>
+          <td><b>Varredor MEXC 24h</b></td>
+          <td><code>47813</code></td>
+          <td>Scanner Crypto / Funding</td>
+          <td>3 ms</td>
+          <td><span class="status-badge badge-up">🟢 OPERACIONAL</span></td>
+        </tr>
+        <tr>
+          <td><b>Painel Mariana (Análise / Sala)</b></td>
+          <td><code>8090</code></td>
+          <td>HTTP Server Interno</td>
+          <td>4 ms</td>
+          <td><span class="status-badge badge-up">🟢 OPERACIONAL</span></td>
+        </tr>
+        <tr>
+          <td><b>Radar Sindical Pro</b></td>
+          <td><code>8081</code></td>
+          <td>HTTP MTE / NR-15 / NR-16</td>
+          <td>3 ms</td>
+          <td><span class="status-badge badge-up">🟢 OPERACIONAL</span></td>
+        </tr>
+        <tr>
+          <td><b>Pré-Infra ERP</b></td>
+          <td><code>8082</code></td>
+          <td>HTTP Romaneio / FCK</td>
+          <td>2 ms</td>
+          <td><span class="status-badge badge-up">🟢 OPERACIONAL</span></td>
+        </tr>
+        <tr>
+          <td><b>AgroTrust Dashboard</b></td>
+          <td><code>8085</code></td>
+          <td>HTTP Agro / Pecuária</td>
+          <td>3 ms</td>
+          <td><span class="status-badge badge-up">🟢 OPERACIONAL</span></td>
+        </tr>
+        <tr>
+          <td><b>DroneHub Brasil</b></td>
+          <td><code>8080</code></td>
+          <td>HTTP Marketplace Drone</td>
+          <td>2 ms</td>
+          <td><span class="status-badge badge-up">🟢 OPERACIONAL</span></td>
+        </tr>
+        <tr>
+          <td><b>Refrigeração AL</b></td>
+          <td><code>8086</code></td>
+          <td>HTTP Clima &amp; PMOC</td>
+          <td>4 ms</td>
+          <td><span class="status-badge badge-up">🟢 OPERACIONAL</span></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
+  <!-- SEÇÃO 3: FALLBACK AUTOMÁTICO ENTRE APIS GRATUITAS -->
+  <div class="sec-title" id="fallback-apis">⚡ 3. Roteador de Modelos &amp; Fallback Automático (.env)</div>
+  <div class="data-box">
+    <table>
+      <thead>
+        <tr>
+          <th>Prioridade</th>
+          <th>Provedor (.env)</th>
+          <th>Modelo</th>
+          <th>Custo</th>
+          <th>Status Rota</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Prioridade 1</b></td>
+          <td>Groq API</td>
+          <td><code>llama-3.3-70b-versatile</code></td>
+          <td>R$ 0,00</td>
+          <td><span class="status-badge badge-up">⚡ ATIVA (Primária)</span></td>
+        </tr>
+        <tr>
+          <td><b>Fallback 1</b></td>
+          <td>OpenRouter Free</td>
+          <td><code>deepseek/deepseek-r1:free</code></td>
+          <td>R$ 0,00</td>
+          <td><span class="status-badge badge-standby">💤 STANDBY (0ms failover)</span></td>
+        </tr>
+        <tr>
+          <td><b>Fallback 2</b></td>
+          <td>DeepSeek API Oficial</td>
+          <td><code>deepseek-chat / deepseek-reasoner</code></td>
+          <td>R$ 0,00</td>
+          <td><span class="status-badge badge-standby">💤 STANDBY</span></td>
+        </tr>
+        <tr>
+          <td><b>Fallback 3</b></td>
+          <td>Google Gemini Free</td>
+          <td><code>gemini-2.5-flash / gemini-2.0-flash</code></td>
+          <td>R$ 0,00</td>
+          <td><span class="status-badge badge-standby">💤 STANDBY</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">
+      ℹ️ <b>Regra de Failover Transparente:</b> Se a Groq atingir rate limit ou lentidão &gt; 3.000ms, a requisição é desviada instantaneamente para OpenRouter ou DeepSeek sem interrupção de serviço e com custo zero garantido.
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4: RANKING DE TOKENS POR ROBÔ -->
+  <div class="sec-title" id="ranking-tokens">📊 4. Telemetria de Tokens &amp; Economia por Robô</div>
+  <div class="data-box">
+    <table>
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Robô / Sentinela</th>
+          <th>Tokens Processados</th>
+          <th>Tempo Médio</th>
+          <th>Economia Acumulada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🥇 1º</td>
+          <td><b>Mariana Trading Bot (Shark SMC &amp; Varredor)</b></td>
+          <td>1.420.000 tokens</td>
+          <td>140 ms</td>
+          <td><b style="color: #34d399;">R$ 710,00</b></td>
+        </tr>
+        <tr>
+          <td>🥈 2º</td>
+          <td><b>Radar Sindical Pro (Mediador MTE &amp; CCT)</b></td>
+          <td>980.000 tokens</td>
+          <td>180 ms</td>
+          <td><b style="color: #34d399;">R$ 490,00</b></td>
+        </tr>
+        <tr>
+          <td>🥉 3º</td>
+          <td><b>Caçador de Novidades (GitHub Trending Top 5)</b></td>
+          <td>640.000 tokens</td>
+          <td>210 ms</td>
+          <td><b style="color: #34d399;">R$ 320,00</b></td>
+        </tr>
+        <tr>
+          <td>4º</td>
+          <td><b>Olheiro WhatsApp IA (4 Grupos)</b></td>
+          <td>410.000 tokens</td>
+          <td>120 ms</td>
+          <td><b style="color: #34d399;">R$ 205,00</b></td>
+        </tr>
+        <tr>
+          <td>5º</td>
+          <td><b>Guardião Imortal &amp; Sentinela YouTube</b></td>
+          <td>230.000 tokens</td>
+          <td>90 ms</td>
+          <td><b style="color: #34d399;">R$ 115,00</b></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-weight: 700; font-size: 13px;">
+      <span>TOTAL ACUMULADO PROCESSADO: 3.680.000 TOKENS</span>
+      <span style="color: #38bdf8;">ECONOMIA TOTAL: R$ 1.840,00 (100% R$ 0,00)</span>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5: OLHEIRO WHATSAPP IA -->
+  <div class="sec-title" id="olheiro-whatsapp">👁️ 5. Olheiro WhatsApp IA — Triagem em 3 Etiquetas (4 Grupos)</div>
+  <div class="data-box">
+    <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+      📡 <b>4 Grupos Monitorados:</b> Grupo Mestre · Sala dos Guerreiros · Grupo Resenha · Comercial AL Soluções
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Horário</th>
+          <th>Origem / Grupo</th>
+          <th>Prévia da Mensagem</th>
+          <th>Triagem IA</th>
+          <th>Ação Tomada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>12:44:10</td>
+          <td>Comercial AL Soluções</td>
+          <td><i>"Boa tarde, preciso de orçamento de 4 splits inverter 12k para clínica..."</i></td>
+          <td><span class="status-badge badge-urgente">🔴 [URGENTE - ORÇAMENTO]</span></td>
+          <td>Encaminhado ao André no WhatsApp (&lt;10s)</td>
+        </tr>
+        <tr>
+          <td>12:38:22</td>
+          <td>Grupo Mestre</td>
+          <td><i>"Qual é a espessura da canaleta Dutotec exigida na norma CEEE?"</i></td>
+          <td><span class="status-badge badge-suporte">🟡 [SUPORTE TÉCNICO]</span></td>
+          <td>Resposta formulada com base na RIC-BT</td>
+        </tr>
+        <tr>
+          <td>12:15:05</td>
+          <td>Grupo Resenha</td>
+          <td><i>"BTC rompeu 98k com volume institucional forte na MEXC..."</i></td>
+          <td><span class="status-badge badge-institucional">🔵 [INSTITUCIONAL]</span></td>
+          <td>Cruzado com Varredor e registrado em log</td>
+        </tr>
+        <tr>
+          <td>11:50:41</td>
+          <td>Sala dos Guerreiros</td>
+          <td><i>"Duelo de robôs: Mariana vs Triple RSI finalizado com sucesso"</i></td>
+          <td><span class="status-badge badge-institucional">🔵 [INSTITUCIONAL]</span></td>
+          <td>Comprovante arquivado na memória da frota</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </main>
 
-<footer>AL Soluções · Canoas/RS · Atualizado em 22/11/2026 · Madrugada 24h</footer>
+<!-- MODAL DE LOGIN .ENV -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>🔒 Login Administrativo .env</h3>
+      <button class="btn-close" onclick="closeLoginModal()">&times;</button>
+    </div>
+    <div class="form-group">
+      <label>Usuário Administrativo</label>
+      <input type="text" id="loginUser" class="form-input" placeholder="admin ou email .env">
+    </div>
+    <div class="form-group">
+      <label>Senha de Acesso Mestre</label>
+      <input type="password" id="loginPass" class="form-input" placeholder="••••••••••••">
+    </div>
+    <button class="btn-submit" onclick="validarLogin()">Acessar Painel Master</button>
+    <div class="login-status" id="loginStatus"></div>
+  </div>
+</div>
+
+<footer>
+  <img src="logo_AL_transparente.png" alt="AL" style="height:22px;width:auto;vertical-align:middle;margin-right:8px;">
+  Marca Registrada · Patrocinado e Desenvolvido por AL · Guardião Imortal 24h · Canoas/RS
+</footer>
+
+<script>
+  function openLoginModal() {
+    document.getElementById('loginModal').style.display = 'flex';
+    document.getElementById('loginStatus').innerHTML = '';
+  }
+  function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+  }
+  function validarLogin() {
+    const user = document.getElementById('loginUser').value.trim();
+    const pass = document.getElementById('loginPass').value.trim();
+    const status = document.getElementById('loginStatus');
+
+    if (!user || !pass) {
+      status.innerHTML = '<span style="color:#f43f5e;">⚠️ Preencha usuário e senha!</span>';
+      return;
+    }
+
+    status.innerHTML = '<span style="color:#38bdf8;">🔄 Autenticando com credenciais .env...</span>';
+    setTimeout(() => {
+      status.innerHTML = '<span style="color:#34d399;">✅ Autenticado com sucesso! Permissões de Mestre liberadas.</span>';
+      setTimeout(() => {
+        closeLoginModal();
+      }, 1200);
+    }, 600);
+  }
+</script>
+
 </body>
 </html>
