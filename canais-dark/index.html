@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estúdio Social & 10 Canais Dark — Pipeline Determinístico (Doc 117)</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #131b2a;
+      --border: rgba(255,255,255,0.08);
+      --primary: #38bdf8;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 24px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .header-box { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 24px; }
+    .title-area h1 { font-size: 22px; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+    .title-area p { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .badge-status { background: rgba(16,185,129,0.15); border: 1px solid var(--success); color: var(--success); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+
+    /* Pipeline 7 Etapas */
+    .pipeline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 30px; }
+    .pipeline-step { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 10px; text-align: center; position: relative; }
+    .pipeline-step.active { border-color: var(--primary); box-shadow: 0 0 15px rgba(56,189,248,0.15); }
+    .step-num { width: 26px; height: 26px; border-radius: 50%; background: #1e293b; color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; margin: 0 auto 8px; }
+    .step-name { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .step-tool { font-size: 10px; color: var(--muted); }
+
+    /* Grid Principal */
+    .main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+
+    /* Fila de Aprovação */
+    .section-title { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .queue-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    .queue-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .ref-tag { background: #1e293b; color: #38bdf8; font-family: monospace; font-size: 11px; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(56,189,248,0.3); }
+    .queue-body { font-size: 13px; color: #cbd5e1; margin-bottom: 12px; line-height: 1.5; }
+    .queue-meta { display: flex; gap: 12px; font-size: 11px; color: var(--muted); margin-bottom: 12px; flex-wrap: wrap; }
+    .queue-actions { display: flex; gap: 10px; }
+
+    .btn { padding: 8px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-success { background: var(--success); color: #0b0f17; }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-outline { background: #1e293b; border: 1px solid var(--border); color: #fff; }
+
+    /* Canais List */
+    .channel-list { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .channel-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 12px; }
+    .channel-item:last-child { border-bottom: none; }
+    .channel-badge { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-box">
+      <div class="title-area">
+        <h1>🎬 Estúdio Social & 10 Canais Dark — R$ 0,00 (Doc 117)</h1>
+        <p>Pipeline Determinístico de 7 Etapas: Rembg + Buzz (Whisper Offline) + Render FFmpeg + Curadoria [REF:] WhatsApp</p>
+      </div>
+      <div class="badge-status">
+        ● Motor FFmpeg + Whisper Ativo
+      </div>
+    </div>
+
+    <!-- PIPELINE DE 7 ETAPAS DETERMINÍSTICO -->
+    <div class="pipeline-grid">
+      <div class="pipeline-step">
+        <div class="step-num">1</div>
+        <div class="step-name">Roteiro</div>
+        <div class="step-tool">Templates + IA Local</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num">2</div>
+        <div class="step-name">Voz Neural</div>
+        <div class="step-tool">Edge-TTS / Local</div>
+      </div>
+      <div class="pipeline-step active">
+        <div class="step-num">3</div>
+        <div class="step-name">Recorte Fundo</div>
+        <div class="step-tool">rembg (IA Offline)</div>
+      </div>
+      <div class="pipeline-step active">
+        <div class="step-num">4</div>
+        <div class="step-name">Legendas Sync</div>
+        <div class="step-tool">Buzz (Whisper)</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num">5</div>
+        <div class="step-name">Render 60fps</div>
+        <div class="step-tool">FFmpeg Determinístico</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num">6</div>
+        <div class="step-name">Curadoria</div>
+        <div class="step-tool">Fila Aprovar/Rejeitar</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num">7</div>
+        <div class="step-name">Publicação</div>
+        <div class="step-tool">Postiz + [REF:] WhatsApp</div>
+      </div>
+    </div>
+
+    <div class="main-grid">
+      <!-- FILA DE APROVAÇÃO E RASTREIO [REF:] -->
+      <div>
+        <div class="section-title">
+          <span>📬</span> Fila de Aprovação / Reprovação & Rastreio [REF:]
+        </div>
+
+        <!-- Card 1: Mistérios do Mar Profundo -->
+        <div class="queue-card">
+          <div class="queue-header">
+            <span class="ref-tag">[REF: CANAL06-MAR-P482]</span>
+            <span style="background: rgba(245,158,11,0.2); color: #fbbf24; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+              Aguardando Aprovação
+            </span>
+          </div>
+          <h3 style="font-size: 15px; color: #fff; margin-bottom: 6px;">
+            O Mistério do Navio SS Andrea Doria no Fundo do Atlântico
+          </h3>
+          <p class="queue-body">
+            "Nas profundezas escuras a mais de setenta metros da costa americana descansa o Andrea Doria... 
+            Recorte de fundo executado via rembg, áudio sincronizado no Buzz (Whisper) e trilha sombria gerada localmente."
+          </p>
+          <div class="queue-meta">
+            <span>⏱️ 59s (Shorts 9:16)</span>
+            <span>🎙️ Voz: pt-BR-AntonioNeural</span>
+            <span>✂️ rembg: 3 frames isolados</span>
+            <span>💬 Buzz: 100% Sincronizado</span>
+          </div>
+          <div class="queue-actions">
+            <button class="btn btn-success" onclick="aprovarItem('CANAL06-MAR-P482')">✅ Aprovar e Enviar p/ Postiz</button>
+            <button class="btn btn-danger" onclick="rejeitarItem('CANAL06-MAR-P482')">❌ Rejeitar / Refazer Roteiro</button>
+            <button class="btn btn-outline" onclick="alert('📲 Disparando prévia via WhatsApp [REF: CANAL06-MAR-P482]!')">📲 WhatsApp</button>
+          </div>
+        </div>
+
+        <!-- Card 2: Radar de Vagas RS -->
+        <div class="queue-card">
+          <div class="queue-header">
+            <span class="ref-tag">[REF: CANAL01-VAGAS-RS09]</span>
+            <span style="background: rgba(16,185,129,0.2); color: #34d399; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+              Aprovado / Agendado
+            </span>
+          </div>
+          <h3 style="font-size: 15px; color: #fff; margin-bottom: 6px;">
+            50 Vagas de Soldador e Eletricista no Polo Petroquímico de Triunfo/RS
+          </h3>
+          <p class="queue-body">
+            "Parada de manutenção confirmada para dezembro. Salários de R$ 3.800 a R$ 6.200 com periculosidade de 30%...
+            Legendas em amarelo estilo Hormozi geradas pelo Buzz e template determinístico FFmpeg."
+          </p>
+          <div class="queue-meta">
+            <span>⏱️ 48s (Shorts 9:16)</span>
+            <span>🎙️ Voz: pt-BR-FranciscaNeural</span>
+            <span>📅 Agendado Postiz: Hoje às 18h15</span>
+          </div>
+          <div class="queue-actions">
+            <button class="btn btn-outline" style="color: #38bdf8;">📊 Ver Rastreio Postiz</button>
+            <button class="btn btn-outline" onclick="alert('📲 Notificação [REF: CANAL01-VAGAS-RS09] ativa no Grupo Olheiro!')">📲 Rastreio [REF:]</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAINEL DOS 10 CANAIS DARK + CALENDÁRIO -->
+      <div>
+        <div class="section-title">
+          <span>📺</span> 10 Canais Dark Monitorados
+        </div>
+        <div class="channel-list">
+          <div class="channel-item">
+            <div>
+              <strong>01. Radar Vagas RS</strong>
+              <div style="font-size: 11px; color: var(--muted);">Polo Triunfo / Refap Canoas</div>
+            </div>
+            <span class="channel-badge" style="background: #10b981; color: #0b0f17;">Ativo 18h</span>
+          </div>
+
+          <div class="channel-item">
+            <div>
+              <strong>02. Curiosidades do Espaço</strong>
+              <div style="font-size: 11px; color: var(--muted);">Telescópio James Webb & Marte</div>
+            </div>
+            <span class="channel-badge" style="background: #38bdf8; color: #0b0f17;">Ativo 12h</span>
+          </div>
+
+          <div class="channel-item">
+            <div>
+              <strong>03. Finanças & Cripto Pro</strong>
+              <div style="font-size: 11px; color: var(--muted);">Bitcoin, MEXC & Arbitragem</div>
+            </div>
+            <span class="channel-badge" style="background: #f59e0b; color: #0b0f17;">Ativo 20h</span>
+          </div>
+
+          <div class="channel-item">
+            <div>
+              <strong>04. Sertanejo Raiz Dark</strong>
+              <div style="font-size: 11px; color: var(--muted);">Histórias de Tião Carreiro e Lendas</div>
+            </div>
+            <span class="channel-badge" style="background: #10b981; color: #0b0f17;">Ativo 17h</span>
+          </div>
+
+          <div class="channel-item">
+            <div>
+              <strong>05. Horóscopo & Astrologia</strong>
+              <div style="font-size: 11px; color: var(--muted);">Previsão Diária dos 12 Signos</div>
+            </div>
+            <span class="channel-badge" style="background: #a855f7; color: #fff;">Ativo 06h</span>
+          </div>
+
+          <div class="channel-item">
+            <div>
+              <strong>06. Mistérios do Mar Profundo</strong>
+              <div style="font-size: 11px; color: var(--muted);">Fossa das Marianas & Naufrágios</div>
+            </div>
+            <span class="channel-badge" style="background: #38bdf8; color: #0b0f17;">Renderizando</span>
+          </div>
+
+          <div class="channel-item">
+            <div>
+              <strong>07. Gambiarras Elétricas</strong>
+              <div style="font-size: 11px; color: var(--muted);">Choques, NBR 5410 & Perigos</div>
+            </div>
+            <span class="channel-badge" style="background: #ef4444; color: #fff;">Ativo 19h</span>
+          </div>
+
+          <div class="channel-item">
+            <div>
+              <strong>08. Mitologia Antiga</strong>
+              <div style="font-size: 11px; color: var(--muted);">Babilônia, Egito & Deuses</div>
+            </div>
+            <span class="channel-badge" style="background: #f59e0b; color: #0b0f17;">Ativo 21h</span>
+          </div>
+
+          <div class="channel-item">
+            <div>
+              <strong>09. IA & Ferramentas Grátis</strong>
+              <div style="font-size: 11px; color: var(--muted);">GitHub Open-Source que poupa R$</div>
+            </div>
+            <span class="channel-badge" style="background: #10b981; color: #0b0f17;">Ativo 11h</span>
+          </div>
+
+          <div class="channel-item">
+            <div>
+              <strong>10. Notícias Sem Mi-mi-mi</strong>
+              <div style="font-size: 11px; color: var(--muted);">Fatos Rápidos e Diretos em 60s</div>
+            </div>
+            <span class="channel-badge" style="background: #64748b; color: #fff;">Ativo 13h</span>
+          </div>
+        </div>
+
+        <!-- Calendário Editorial -->
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-top: 18px;">
+          <div style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px;">
+            📅 Calendário Editorial Semanal
+          </div>
+          <div style="font-size: 11px; color: var(--muted); line-height: 1.6;">
+            <div>• <strong>Manhã (07h-11h):</strong> Horóscopo (06h) | Vagas RS (07h30) | Notícias (10h)</div>
+            <div>• <strong>Almoço (12h-14h):</strong> Curiosidades Espaço (12h) | IA Grátis (13h)</div>
+            <div>• <strong>Tarde (17h-19h):</strong> Sertanejo Raiz (17h) | Vagas RS Tarde (18h15) | Gambiarras (19h)</div>
+            <div>• <strong>Noite (20h-22h):</strong> Finanças/Cripto (20h) | Mar Profundo (21h) | Mitologia (21h30)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function aprovarItem(ref) {
+      alert(`✅ [REF: ${ref}] APROVADO! Enviado para agendamento no Postiz com webhook para WhatsApp!`);
+    }
+    function rejeitarItem(ref) {
+      alert(`❌ [REF: ${ref}] REJEITADO. Devolvido para re-roteirização determinística.`);
+    }
+  </script>
+</body>
+</html>

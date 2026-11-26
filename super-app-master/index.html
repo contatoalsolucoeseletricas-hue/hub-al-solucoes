@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070c17">
+<title>AL Soluções Master — Super-App Unificado (Doc 120)</title>
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --bg: #070c17;
+    --card: #0d1626;
+    --card-border: #1c2b44;
+    --blue: #2563eb;
+    --blue-light: #60a5fa;
+    --amber: #f59e0b;
+    --cyan: #06b6d4;
+    --emerald: #10b981;
+    --rose: #f43f5e;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+  }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+  header {
+    background: linear-gradient(135deg, #091220, #131c30);
+    border-bottom: 1px solid var(--card-border);
+    padding: 22px 16px;
+  }
+  .header-wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-logo {
+    width: 48px;
+    height: 48px;
+    background: #000;
+    border: 2px solid var(--blue-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--blue-light);
+    position: relative;
+    box-shadow: 0 0 15px rgba(37,99,235,0.4);
+  }
+  .brand-logo span.ray {
+    color: var(--amber);
+    position: absolute;
+    font-size: 14px;
+    right: 4px;
+    top: 4px;
+  }
+  .brand-text h1 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .brand-text p {
+    margin: 0;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+  .badge-master {
+    background: rgba(37,99,235,0.15);
+    border: 1px solid var(--blue-light);
+    color: #93c5fd;
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 11.5px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-tabs {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    gap: 6px;
+    padding: 12px 16px;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--card-border);
+    background: #09111f;
+  }
+  .tab-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--card);
+    border-color: var(--card-border);
+    color: #fff;
+  }
+  .tab-btn.active {
+    border-color: var(--blue-light);
+    color: #93c5fd;
+    background: #0e1b33;
+  }
+
+  .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .box {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .box-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th {
+    padding: 10px;
+    border-bottom: 1px solid var(--card-border);
+    color: var(--text-muted);
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  td {
+    padding: 11px 10px;
+    border-bottom: 1px solid #16243d;
+    color: #cbd5e1;
+  }
+  tr:last-child td { border-bottom: none; }
+
+  .btn {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn:hover { background: #1d4ed8; }
+  .btn-amber { background: var(--amber); color: #070c17; }
+  .btn-amber:hover { background: #d97706; }
+  .btn-emerald { background: var(--emerald); color: #070c17; }
+  .btn-emerald:hover { background: #059669; }
+
+  .status-tag {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .tag-ok { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+  .tag-warn { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+  .tag-blue { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 40px 16px;
+    border-top: 1px solid var(--card-border);
+    margin-top: 40px;
+  }
+</style>
+<link rel="icon" type="image/png" href="favicon_AL.png">
+<link rel="apple-touch-icon" href="favicon_AL_192.png">
+</head>
+<body>
+
+<header>
+  <div class="header-wrap">
+    <div class="brand">
+      <div class="brand-logo">
+        AL<span class="ray">⚡</span>
+      </div>
+      <div class="brand-text">
+        <h1>AL Soluções Master — Super-App Unificado</h1>
+        <p>Elétrica BT/MT · Ar-Condicionado/PMOC · Construção Civil · PCM Industrial · Marketplace</p>
+      </div>
+    </div>
+    <div class="badge-master">
+      <span>★ 4 PILARES INTEGRADOS</span>
+      <span>•</span>
+      <span>REDE CREDENCIADA R$ 33/MÊS ANTI-LEILÃO</span>
+    </div>
+  </div>
+</header>
+
+<div class="nav-tabs">
+  <button class="tab-btn active" onclick="setMasterTab('pilares')">🏛️ 4 Pilares Técnicos</button>
+  <button class="tab-btn" onclick="setMasterTab('marketplace')">🏆 10 Concorrentes Superados</button>
+  <button class="tab-btn" onclick="setMasterTab('profissionais')">👷 Ficha Técnica de Profissionais</button>
+  <button class="tab-btn" onclick="setMasterTab('civil')">🏗️ Construção Civil &amp; RDO</button>
+  <button class="tab-btn" onclick="setMasterTab('industrial')">⚙️ PCM Industrial &amp; NR-33</button>
+  <button class="tab-btn" onclick="setMasterTab('plano')">💳 Plano R$ 33/mês &amp; Pix</button>
+</div>
+
+<main class="wrap">
+
+  <!-- ABA 1: OS 4 PILARES TÉCNICOS UNIFICADOS -->
+  <div id="mtab-pilares" class="tab-pane active">
+    <div class="grid-4" style="margin-bottom: 20px;">
+      <div class="box" style="border-top: 3px solid var(--amber);">
+        <div style="font-size: 26px; margin-bottom: 8px;">⚡</div>
+        <b style="font-size: 15px; color: #fff; display: block;">Pilar A: Elétrica BT &amp; MT</b>
+        <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin: 6px 0 12px;">
+          NBR 5410, NBR 14039, 27 RICs Brasil, Dutotec 40%, SPDA NBR 5419:2026, PPCI e Leitor de Foto/PDF.
+        </p>
+        <span class="status-tag tag-ok">✓ 100% Homologado</span>
+      </div>
+
+      <div class="box" style="border-top: 3px solid var(--cyan);">
+        <div style="font-size: 26px; margin-bottom: 8px;">❄️</div>
+        <b style="font-size: 15px; color: #fff; display: block;">Pilar B: Clima &amp; PMOC</b>
+        <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin: 6px 0 12px;">
+          PMOC Lei 13.589/2018, Carga Térmica BTU, Ficha Viva QR Code na evaporadora e Orçamento 3 Opções.
+        </p>
+        <span class="status-tag tag-ok">✓ 100% Homologado</span>
+      </div>
+
+      <div class="box" style="border-top: 3px solid var(--emerald);">
+        <div style="font-size: 26px; margin-bottom: 8px;">🏗️</div>
+        <b style="font-size: 15px; color: #fff; display: block;">Pilar C: Construção Civil</b>
+        <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin: 6px 0 12px;">
+          RDO Digital off-line com GPS/Horário, Pinos em Planta Baixa (Fieldwire) e Calculadora de Concreto.
+        </p>
+        <span class="status-tag tag-ok">✓ 100% Homologado</span>
+      </div>
+
+      <div class="box" style="border-top: 3px solid var(--rose);">
+        <div style="font-size: 26px; margin-bottom: 8px;">⚙️</div>
+        <b style="font-size: 15px; color: #fff; display: block;">Pilar D: PCM Industrial</b>
+        <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin: 6px 0 12px;">
+          Árvore de Ativos com QR Code, MTBF/MTTR, LOTO (Bloqueio/Etiquetagem) e Permissão de Trabalho NR-33/NR-35.
+        </p>
+        <span class="status-tag tag-ok">✓ 100% Homologado</span>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">
+        <span>Matriz de Integração Central — Todos os 4 Pilares no Mesmo Painel</span>
+        <span style="font-size: 11px; color: var(--cyan);">Sem fragmentação de softwares</span>
+      </div>
+      <p style="font-size: 13px; color: #cbd5e1; line-height: 1.6;">
+        O <b>AL Soluções Master</b> unifica o canteiro de obras, a subestação de média tensão, as rotinas de higienização de ar-condicionado e a manutenção preventiva das linhas de fábrica em um único ecossistema PWA, com suporte completo para celular (POCO / MIUI 14) e desktop, operando 100% em rede local com espelho permanente 24h.
+      </p>
+    </div>
+  </div>
+
+  <!-- ABA 2: 10 CONCORRENTES SUPERADOS -->
+  <div id="mtab-marketplace" class="tab-pane">
+    <div class="box">
+      <div class="box-title">
+        <span>Benchmark: Os 10 Principais Concorrentes Superados em 1 Só Super-App</span>
+        <span style="font-size: 11px; color: var(--emerald); font-weight: bold;">R$ 0,00 de Custo de Plataforma</span>
+      </div>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Concorrente</th>
+              <th>Nicho / Mercado</th>
+              <th>Modelo Tradicional Abusivo</th>
+              <th>Superação no AL Soluções Master</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>1. GetNinjas</b></td>
+              <td>Marketplace Geral (BR)</td>
+              <td>Cobra "moedas" por lead sem garantia de fechar</td>
+              <td><span style="color: #34d399;">Acesso 100% gratuito sem leilão predatório</span></td>
+            </tr>
+            <tr>
+              <td><b>2. Triider</b></td>
+              <td>Reformas &amp; Manutenção</td>
+              <td>Retenção de comissão de até 20% do serviço</td>
+              <td><span style="color: #34d399;">Contato direto e pagamento integral ao técnico</span></td>
+            </tr>
+            <tr>
+              <td><b>3. Engehall (Meu Ajudante)</b></td>
+              <td>Elétrica Predial</td>
+              <td>Orçamentos básicos sem suite completa</td>
+              <td><span style="color: #34d399;">Suite BT/MT com 27 RICs, Dutotec e DXF/PDF</span></td>
+            </tr>
+            <tr>
+              <td><b>4. Habitissimo</b></td>
+              <td>Obras &amp; Reformas</td>
+              <td>Venda do mesmo contato para 4 ou 5 concorrentes</td>
+              <td><span style="color: #34d399;">Regra Anti-Leilão: 1 cliente = 1 técnico qualificado</span></td>
+            </tr>
+            <tr>
+              <td><b>5. Cronoshare</b></td>
+              <td>Serviços Locais</td>
+              <td>Cobrança por visualização de número</td>
+              <td><span style="color: #34d399;">Geolocalização em tempo real sem taxa por clique</span></td>
+            </tr>
+            <tr>
+              <td><b>6. Produttivo</b></td>
+              <td>Gestão PMOC</td>
+              <td>Assinatura mensal cara por usuário</td>
+              <td><span style="color: #34d399;">PMOC completo vitalício com QR Code e laudo ART</span></td>
+            </tr>
+            <tr>
+              <td><b>7. Tractian</b></td>
+              <td>CMMS Industrial</td>
+              <td>Licenciamento enterprise de milhares de reais</td>
+              <td><span style="color: #34d399;">PCM completo, MTBF/MTTR e LOTO a R$ 0,00</span></td>
+            </tr>
+            <tr>
+              <td><b>8. Diário de Obra Online</b></td>
+              <td>RDO Civil</td>
+              <td>Mensalidade por canteiro de obras</td>
+              <td><span style="color: #34d399;">RDO mobile off-line com carimbo GPS ilimitado</span></td>
+            </tr>
+            <tr>
+              <td><b>9. Fieldwire (Hilti)</b></td>
+              <td>Pinos em Planta</td>
+              <td>Cobrança por folha de projeto e usuário</td>
+              <td><span style="color: #34d399;">Pinos as-built em PDF nativo sem restrição</span></td>
+            </tr>
+            <tr>
+              <td><b>10. Checkatrade (UK)</b></td>
+              <td>Validação Técnica</td>
+              <td>Verificação restrita ao Reino Unido</td>
+              <td><span style="color: #34d399;">Dossiê completo com CREA, CFT, NRs, CA e Calibração</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 3: FICHA TÉCNICA DE PROFISSIONAIS VERIFICADOS -->
+  <div id="mtab-profissionais" class="tab-pane">
+    <div class="box">
+      <div class="box-title">
+        <span>Rede de Profissionais Homologados — Dossiê Técnico Verificado</span>
+        <span style="font-size: 11px; color: var(--emerald);">Garantia AL Soluções</span>
+      </div>
+      <div class="grid-2" style="margin-top: 14px;">
+        
+        <!-- CARD TÉCNICO 1 -->
+        <div style="background: #091222; border: 1.5px solid var(--emerald); border-radius: 14px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <b style="font-size: 16px; color: #fff;">André Luís (Responsável Geral)</b>
+              <div style="font-size: 11.5px; color: var(--amber); margin-top: 2px;">CREA-RS Homologado · Canoas/RS</div>
+            </div>
+            <span class="status-tag tag-ok">✓ VERIFICADO MESTRE</span>
+          </div>
+          <div style="font-size: 12px; line-height: 1.7; color: #cbd5e1; margin-top: 12px;">
+            <div><b>Especialidades:</b> BT/MT, Subestações, PMOC, SPDA NBR 5419, PPCI Bombeiros</div>
+            <div><b>Normas em Dia:</b> NR-10 (Val: 11/2027), NR-10 SEP, NR-35, NR-33</div>
+            <div><b>Instrumentos Calibrados:</b> Fluke True RMS, Megôhmetro 5kV, Termovisor FLIR</div>
+            <div><b>EPIs com CA:</b> Capacete Classe B, Luvas 10kV, Bota Dielétrica</div>
+          </div>
+        </div>
+
+        <!-- CARD TÉCNICO 2 -->
+        <div style="background: #091222; border: 1px solid var(--card-border); border-radius: 14px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <b style="font-size: 16px; color: #fff;">Carlos Eduardo M. (Parceiro Credenciado)</b>
+              <div style="font-size: 11.5px; color: var(--cyan); margin-top: 2px;">CFT/CRT-04 Ativo · Porto Alegre/RS</div>
+            </div>
+            <span class="status-tag tag-ok">✓ CREDENCIADO</span>
+          </div>
+          <div style="font-size: 12px; line-height: 1.7; color: #cbd5e1; margin-top: 12px;">
+            <div><b>Especialidades:</b> Climatização Split/VRF, Manutenção Civil, RDO</div>
+            <div><b>Normas em Dia:</b> NR-35 (Val: 08/2027), NR-10 Básica, ASO Ocupacional</div>
+            <div><b>Instrumentos Calibrados:</b> Bomba de Vácuo 12 CFM, Vacuômetro Digital, Manifold R-32</div>
+            <div><b>Plano Ativo:</b> Credenciado R$ 33/mês (Regra Anti-Leilão Ativa)</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 4: CONSTRUÇÃO CIVIL & RDO -->
+  <div id="mtab-civil" class="tab-pane">
+    <div class="grid-2">
+      <div class="box">
+        <div class="box-title">
+          <span>Relatório Diário de Obra (RDO Digital Off-line)</span>
+          <span style="font-size: 11px; color: var(--emerald);">Carimbo GPS / Horário</span>
+        </div>
+        <div style="font-size: 12.5px; line-height: 1.7; color: #cbd5e1;">
+          <div><b>Obra:</b> Edifício Residencial Parque Canoas #OBRA-104</div>
+          <div><b>Condições Climáticas:</b> Manhã: Ensolarado · Tarde: Nublado (Sem chuva)</div>
+          <div><b>Mão de Obra Própria:</b> 1 Engenheiro, 2 Oficiais Eletricistas, 2 Pedreiros</div>
+          <div><b>Mão de Obra Terceirizada:</b> 3 Pintores (Gesso e Selador)</div>
+          <div><b>Equipamentos em Uso:</b> 1 Andaime Fachadeiro, 1 Betoneira 400L, 2 Furadeiras SDS</div>
+          <div><b>Atividades Realizadas:</b> Conclusão da tubulação de entrada CEEE e fiação da prumada.</div>
+        </div>
+        <button class="btn btn-emerald" style="width: 100%; margin-top: 14px;" onclick="alert('RDO emitido e assinado com carimbo temporal!')">
+          📝 Exportar RDO em PDF com Assinatura Digital
+        </button>
+      </div>
+
+      <div class="box">
+        <div class="box-title">
+          <span>Pinos em Planta Baixa (Estilo Fieldwire)</span>
+          <span style="font-size: 11px; color: var(--cyan);">As-Built Interativo</span>
+        </div>
+        <div style="border: 1px solid var(--card-border); border-radius: 12px; padding: 20px; background: #070d18; text-align: center;">
+          <div style="font-size: 28px; margin-bottom: 6px;">🗺️</div>
+          <b style="font-size: 13px; color: #fff;">Planta Pavimento Tipo (PDF/DWG Vetorizado)</b>
+          <div style="font-size: 11.5px; color: var(--text-muted); margin: 6px 0 12px;">
+            Pino 01: Tomada 20A Bancada Cozinha (Concluída) · Pino 02: Quadro de Distribuição (Montado) · Pino 03: Ponto de Ar Inverter (Pressurizado).
+          </div>
+          <button class="btn" onclick="alert('Planta interativa aberta no celular!')">Visualizar Pinos da Obra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 5: PCM INDUSTRIAL & NR-33 -->
+  <div id="mtab-industrial" class="tab-pane">
+    <div class="grid-2">
+      <div class="box">
+        <div class="box-title">
+          <span>PCM Industrial &amp; Indicadores de Confiabilidade</span>
+          <span style="font-size: 11px; color: var(--cyan);">Disponibilidade 99.4%</span>
+        </div>
+        <div style="font-size: 13px; line-height: 1.8; color: #cbd5e1;">
+          <div><b>MTBF (Tempo Médio Entre Falhas):</b> 340 horas de operação contínua</div>
+          <div><b>MTTR (Tempo Médio de Reparo):</b> 1.8 horas</div>
+          <div><b>Árvore de Ativos:</b> Linha 02 &gt; Prensa Hidráulica &gt; Unidade Hidráulica 75HP</div>
+          <div><b>Procedimento LOTO:</b> Cadeado Vermelho #04 + Garra de Bloqueio Elétrico 480V</div>
+        </div>
+        <button class="btn btn-amber" style="width: 100%; margin-top: 14px;" onclick="alert('Ordem de Serviço Industrial aberta!')">
+          ⚙️ Abrir OS Industrial com QR Code
+        </button>
+      </div>
+
+      <div class="box">
+        <div class="box-title">
+          <span>Permissão de Entrada e Trabalho (PET) — NR-33 &amp; NR-35</span>
+          <span style="font-size: 11px; color: var(--rose);">Segurança Máxima</span>
+        </div>
+        <div style="font-size: 12.5px; line-height: 1.7; color: #cbd5e1;">
+          <div><b>Espaço Confinado:</b> Caixa Subterrânea de Média Tensão 13.8kV</div>
+          <div><b>Medição de Gases:</b> Oxigênio 20.9% (Normal) · Inflamáveis 0% · CO 0 ppm</div>
+          <div><b>Vigia de Entrada:</b> Treinado e posicionado no acesso exterior com rádio</div>
+          <div><b>Trabalho em Altura (NR-35):</b> Cinto paraquedista duplo talabarte com trava-quedas</div>
+        </div>
+        <button class="btn" style="width: 100%; margin-top: 14px; background: #e11d48;" onclick="alert('PET NR-33 assinada pelo Supervisor de Entrada!')">
+          🛡️ Validar PET NR-33 / NR-35 com Assinatura
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 6: PLANO R$ 33/MÊS & REGRA ANTI-LEILÃO -->
+  <div id="mtab-plano" class="tab-pane">
+    <div class="grid-2">
+      <div class="box" style="border: 2px solid var(--blue-light);">
+        <div class="box-title">
+          <span>Credenciamento Profissional AL Soluções — R$ 33,00 / mês</span>
+          <span style="font-size: 11px; background: rgba(37,99,235,0.2); color: #93c5fd; padding: 2px 8px; border-radius: 6px; font-weight: bold;">PIX AUTOMÁTICO</span>
+        </div>
+        <p style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6;">
+          Diferente dos marketplaces abusivos que cobram por moedas ou arrancam 20% do seu serviço, no <b>AL Soluções Master</b> você paga apenas uma taxa simbólica de manutenção de <b>R$ 33,00 por mês</b> via Pix e recebe clientes diretos no seu WhatsApp!
+        </p>
+
+        <div style="display: flex; gap: 16px; align-items: center; background: #070d18; padding: 14px; border-radius: 12px; margin-top: 10px;">
+          <div style="background: #fff; padding: 8px; border-radius: 8px; flex-shrink: 0;">
+            <svg width="100" height="100" viewBox="0 0 100 100" fill="#070c17">
+              <path d="M0,0 h30 v30 h-30 z M5,5 v20 h20 v-20 z M10,10 h10 v10 h-10 z M70,0 h30 v30 h-30 z M75,5 v20 h20 v-20 z M80,10 h10 v10 h-10 z M0,70 h30 v30 h-30 z M5,75 v20 h20 v-20 z M10,80 h10 v10 h-10 z M40,10 h10 v10 h-10 z M55,5 h10 v15 h-10 z M40,35 h20 v10 h-20 z M10,45 h15 v10 h-15 z M70,40 h15 v20 h-15 z M35,60 h15 v15 h-15 z M60,65 h15 v10 h-15 z M80,75 h15 v15 h-15 z M45,85 h20 v10 h-20 z"/>
+            </svg>
+          </div>
+          <div style="font-size: 12px; line-height: 1.6; color: #cbd5e1;">
+            <div><b>Chave Pix:</b> pix@alsolucoes.eng.br</div>
+            <div><b>Valor Mensalidade:</b> R$ 33,00 (Sem surpresas)</div>
+            <div><b>Benefício:</b> Selo Verificado + Perfil Público no Hub Central</div>
+            <div><b>Ativação:</b> Imediata após envio do comprovante</div>
+          </div>
+        </div>
+
+        <button class="btn btn-emerald" style="width: 100%; margin-top: 14px;" onclick="alert('Chave Pix copiada com sucesso!')">
+          💳 Copiar Código Pix Copia e Cola (R$ 33,00)
+        </button>
+      </div>
+
+      <div class="box">
+        <div class="box-title">
+          <span>Regra Anti-Leilão de Contato (Exclusividade Técnica)</span>
+          <span style="font-size: 11px; color: var(--emerald);">Proteção ao Técnico</span>
+        </div>
+        <div style="font-size: 12.5px; line-height: 1.7; color: #cbd5e1;">
+          <p>
+            No GetNinjas e Habitissimo, o telefone de uma senhora que precisa de um chuveiro é vendido para 4 eletricistas ao mesmo tempo. O resultado é guerra predatória de preços onde ninguém ganha.
+          </p>
+          
+          <div style="background: rgba(16, 185, 129, 0.12); border: 1.5px solid var(--emerald); border-radius: 12px; padding: 16px; color: #34d399; font-weight: 600; line-height: 1.6;">
+            <b>✓ REGRA ANTI-LEILÃO DE CONTATO (DOC 120 — SEÇÃO 7.3):</b><br>
+            • <b>Cliente 100% Grátis (R$ 0,00):</b> O solicitante nunca paga para abrir pedido nem tem seus dados expostos publicamente.<br>
+            • <b>Máximo de 3 a 4 Profissionais Qualificados por Pedido:</b> Em vez de jogar o contato no leilão predatório para 20 concorrentes se canibalizarem, a plataforma direciona o lead exclusivamente para os 3 ou 4 parceiros mais próximos (com NRs em dia, ferramentas calibradas e menor custo de deslocamento R$/km).<br>
+            • <b>Alerta Silencioso de Área de Risco:</b> Cruzamento automático com o mapa de risco de Canoas/POA para segurança do profissional.
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  ⚡ AL Soluções Master · Super-App Unificado · Doc 120 · Canoas/RS · André Luís · CREA-RS
+</footer>
+
+<script>
+  function setMasterTab(name) {
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active');
+      const oc = b.getAttribute('onclick');
+      if (oc && oc.includes("'" + name + "'")) {
+        b.classList.add('active');
+      }
+    });
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    const tp = document.getElementById('mtab-' + name);
+    if (tp) tp.classList.add('active');
+  }
+</script>
+
+
+<!-- AL_MARCA_REGISTRADA_R78 -->
+<div style="max-width:920px;margin:24px auto 16px;padding:14px 18px;border-radius:14px;border:1px solid #38bdf8;background:linear-gradient(135deg,#09111f,#0f172a);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;box-shadow:0 6px 20px rgba(6,182,212,0.18);">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="logo_AL_transparente.png" alt="AL Oficial" style="height:40px;width:auto;display:block;">
+    <div style="color:#f8fafc;font-family:system-ui,sans-serif;">
+      <div style="font-weight:800;font-size:14px;letter-spacing:0.02em;">Marca Registrada • Patrocinado e Desenvolvido por AL</div>
+      <div style="font-size:12px;color:#94a3b8;">Ecossistema Oficial AL Soluções · Canoas/RS</div>
+    </div>
+  </div>
+  <img src="banner_patrocinado_AL.jpg" alt="Patrocinado por AL" style="height:48px;width:auto;border-radius:8px;border:1px solid rgba(56,189,248,0.4);">
+</div>
+
+</body>
+</html>

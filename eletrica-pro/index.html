@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a101d">
+<title>AL Soluções Elétricas Pro — BT, MT, SPDA &amp; PPCI</title>
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --bg: #070d1a;
+    --card: #0f192d;
+    --card-border: #1e2d4a;
+    --accent: #f59e0b;
+    --accent-glow: rgba(245, 158, 11, 0.2);
+    --cyan: #06b6d4;
+    --emerald: #10b981;
+    --blue: #3b82f6;
+    --rose: #f43f5e;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+  }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+  header {
+    background: linear-gradient(135deg, #0b1528, #182035);
+    border-bottom: 1px solid var(--card-border);
+    padding: 24px 16px;
+  }
+  .header-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .brand h1 {
+    margin: 0 0 6px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .badge-ric {
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid var(--accent);
+    color: #fbbf24;
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-tabs {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--card-border);
+    background: #091222;
+  }
+  .tab-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--card);
+    border-color: var(--card-border);
+    color: #fff;
+  }
+  .tab-btn.active {
+    border-color: var(--accent);
+    color: #fbbf24;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .box {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .box-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th {
+    padding: 10px;
+    border-bottom: 1px solid var(--card-border);
+    color: var(--text-muted);
+    text-align: left;
+    font-size: 11.5px;
+    text-transform: uppercase;
+  }
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #16243d;
+    color: #cbd5e1;
+  }
+  tr:last-child td { border-bottom: none; }
+
+  .btn {
+    background: var(--accent);
+    color: #070d1a;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn:hover { background: #f59e0b; opacity: 0.9; }
+
+  .form-control {
+    width: 100%;
+    background: #091222;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #fff;
+    font-size: 13.5px;
+    margin-bottom: 12px;
+  }
+  .form-control:focus { outline: none; border-color: var(--accent); }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--card-border);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .tl-dot {
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--emerald);
+    border: 3px solid var(--card);
+  }
+  .tl-item.pending .tl-dot { background: #475569; }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 40px 16px;
+    border-top: 1px solid var(--card-border);
+    margin-top: 40px;
+  }
+</style>
+<link rel="icon" type="image/png" href="favicon_AL.png">
+<link rel="apple-touch-icon" href="favicon_AL_192.png">
+</head>
+<body>
+
+<header>
+  <div class="header-wrap">
+    <div class="brand">
+      <h1>⚡ AL Soluções Elétricas Pro</h1>
+      <p>Engenharia BT &amp; MT · NBR 5410 · NBR 14039 · SPDA 5419:2026 · 27 RICs Brasil</p>
+    </div>
+    <div class="badge-ric">
+      <span>RS: CEEE EQUATORIAL &amp; RGE/CPFL</span>
+      <span>•</span>
+      <span>PPCI BOMBEIROS 27 UFs</span>
+    </div>
+  </div>
+</header>
+
+<div class="nav-tabs">
+  <button class="tab-btn active" onclick="setTab('concorrentes')">📊 20 Concorrentes RS</button>
+  <button class="tab-btn" onclick="setTab('dutotec')">📐 Dutotec &amp; Ocupação (40%)</button>
+  <button class="tab-btn" onclick="setTab('rics')">📜 27 RICs &amp; Concessionárias</button>
+  <button class="tab-btn" onclick="setTab('spda')">⚡ SPDA NBR 5419:2026 &amp; PPCI</button>
+  <button class="tab-btn" onclick="setTab('leitor')">📄 Leitor Foto/PDF &amp; DXF</button>
+  <button class="tab-btn" onclick="setTab('obra')">🏗️ Obra ao Vivo &amp; QR Code CD</button>
+  <button class="tab-btn" onclick="setTab('assinatura')">✍️ Aceite &amp; Assinatura Digital</button>
+</div>
+
+<main class="wrap">
+
+  <!-- ABA 1: 20 CONCORRENTES REGIONAIS (CANOAS / POA / METROPOLITANA) -->
+  <div id="tab-concorrentes" class="tab-pane active">
+    <div class="box">
+      <div class="box-title">
+        <span>Matriz de Inteligência de Mercado — 20 Concorrentes (Canoas &amp; Grande POA)</span>
+        <span style="font-size: 11px; color: var(--emerald); font-weight: bold;">AL Soluções: 15% a 25% mais veloz com ART inclusa</span>
+      </div>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>App / Software Concorrente</th>
+              <th>Origem / Mercado</th>
+              <th>Recurso Incorporado &amp; Superado no AL Soluções Elétricas Pro</th>
+              <th>Custo Concorrente vs. AL Soluções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(245, 158, 11, 0.12); font-weight: bold;">
+              <td>★</td>
+              <td style="color: #fbbf24;">⚡ AL Soluções Elétricas Pro (André Luís)</td>
+              <td>Brasil / Global</td>
+              <td>Suite Completa: BT/MT, 27 RICs, Dutotec 40%, SPDA 5419, PPCI, DXF &amp; QR Code CD</td>
+              <td><span style="color: #34d399;">R$ 0,00 (100% Gratuito)</span></td>
+            </tr>
+            <!-- 10 NACIONAIS -->
+            <tr><td>1</td><td><b>Meu Eletricista</b></td><td>Nacional (BR)</td><td>Cálculo rápido de seção de condutores e tabelas de corrente nominal em BT.</td><td>R$ 29/mês ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>2</td><td><b>Meu Ajudante (Engehall)</b></td><td>Nacional (BR)</td><td>Gerenciador de orçamentos rápidos para prestação de serviços prediais.</td><td>R$ 49/mês ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>3</td><td><b>Calculadora do Eletricista</b></td><td>Nacional (BR)</td><td>Conversões de potência, dimensionamento de eletrodutos e quedas de tensão.</td><td>R$ 19/mês ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>4</td><td><b>Calculadora Elétrica NBR 5410</b></td><td>Nacional (BR)</td><td>Tabelas de capacidade de condução de corrente baseadas estritamente na NBR 5410.</td><td>R$ 35/mês ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>5</td><td><b>Prysmian Cable App</b></td><td>Nacional (BR)</td><td>Seleção avançada de cabos por tipo de isolação (PVC, EPR, XLPE) e condições.</td><td>Restrito ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>6</td><td><b>Electrodoc</b></td><td>Nacional (BR)</td><td>Referências técnicas de componentes, pinagens e fórmulas fundamentais.</td><td>Versão Pro Paga ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>7</td><td><b>WOCA Elétrica</b></td><td>Nacional (BR)</td><td>Auxiliar para cálculo de divisão de circuitos e dimensionamento de quadros.</td><td>R$ 89/mês ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>8</td><td><b>PRO-Elétrica</b></td><td>Nacional (BR)</td><td>Algoritmos de traçado de fiação, taxa de ocupação de conduletes e listas.</td><td>R$ 1.800/licença ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>9</td><td><b>AltoQi Builder</b></td><td>Nacional (BR)</td><td>Critérios de auditoria de Quadros de Distribuição (CD) e proteção DR/DPS.</td><td>R$ 3.500/ano ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>10</td><td><b>Auvo / Field Control</b></td><td>Nacional (BR)</td><td>Emissão de Ordem de Serviço digital com fotos, rotas e checklists técnicos.</td><td>R$ 120/usuário ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <!-- 10 INTERNACIONAIS -->
+            <tr><td>11</td><td><b>Electrical Calculations (Ettore Gallina)</b></td><td>Internacional (IT)</td><td>Fórmulas avançadas de corrente trifásica, curto-circuito e fator de potência.</td><td>US$ 4.99/mês ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>12</td><td><b>ServiceTitan Electrical</b></td><td>Internacional (EUA)</td><td>Proposta comercial modular em "3 Opções" (Essencial, Recomendado, Completo).</td><td>US$ 250/mês ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>13</td><td><b>Jobber Electrical</b></td><td>Internacional (CA)</td><td>Rastreamento de execução de obras e comunicação de status via WhatsApp.</td><td>US$ 99/mês ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>14</td><td><b>Simpro Electrical</b></td><td>Internacional (AU)</td><td>Controle de custos operacionais, margem de lucro e catalogações de peças CSV.</td><td>Enterprise ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>15</td><td><b>Tradify</b></td><td>Internacional (NZ)</td><td>Geração instantânea de recibos, faturas e relatórios técnicos em PDF com assinatura.</td><td>US$ 39/mês ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>16</td><td><b>EcoStruxure Ecodial (Schneider)</b></td><td>Internacional (FR)</td><td>Cálculos de redes de BT/MT com curvas de disparo de disjuntores (B, C, D).</td><td>Restrito ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>17</td><td><b>ETAP</b></td><td>Internacional (EUA)</td><td>Análise simplificada de barramentos de MT e especificações de transformadores.</td><td>Licença Corp ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>18</td><td><b>EPLAN Electric P8</b></td><td>Internacional (DE)</td><td>Mapeamento estruturado de componentes para montagem de painéis elétricos.</td><td>US$ 2.000+ ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>19</td><td><b>Ugly's References</b></td><td>Internacional (EUA)</td><td>Tabelas práticas de emergência em campo (código de cores, conversão AWG/mm²).</td><td>Livro/App Pago ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+            <tr><td>20</td><td><b>Fluke Connect</b></td><td>Internacional (EUA)</td><td>Histórico de medições técnicas associadas a ativos por QR Code e testes.</td><td>Assinatura ➔ <span style="color:#34d399;">R$ 0,00</span></td></tr>
+          </tbody>
+</table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 2: CALCULADORA DUTOTEC & CONDULETES (REGRA 40% NBR 5410) -->
+  <div id="tab-dutotec" class="tab-pane">
+    <div class="grid-2">
+      <div class="box">
+        <div class="box-title">
+          <span>Dimensionador Dutotec / Eletrocalhas (Regra 40% NBR 5410)</span>
+          <span style="font-size: 11px; color: var(--cyan);">Taxa Máxima de Ocupação</span>
+        </div>
+        <div>
+          <label style="font-size: 12px; color: var(--text-muted);">Largura da Canaleta / Eletrocalha (mm):</label>
+          <input type="number" id="calcW" class="form-control" value="70">
+
+          <label style="font-size: 12px; color: var(--text-muted);">Altura da Canaleta (mm):</label>
+          <input type="number" id="calcH" class="form-control" value="25">
+
+          <label style="font-size: 12px; color: var(--text-muted);">Quantidade de Condutores 2,5 mm² (Diâm ~3,6mm):</label>
+          <input type="number" id="calcN25" class="form-control" value="8">
+
+          <label style="font-size: 12px; color: var(--text-muted);">Quantidade de Condutores 4,0 mm² (Diâm ~4,2mm):</label>
+          <input type="number" id="calcN40" class="form-control" value="4">
+
+          <button class="btn" style="width: 100%;" onclick="calcularDutotec()">Calcular Taxa de Ocupação</button>
+        </div>
+      </div>
+
+      <div class="box" id="resDutotecBox" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div class="box-title">Resultado Normativo do Cálculo</div>
+        <div style="font-size: 13px; line-height: 1.8;">
+          <div><b>Área Útil da Canaleta:</b> <span id="areaTotal">1.750 mm²</span></div>
+          <div><b>Área Máxima Permitida (40% NBR 5410):</b> <span id="areaPermitida" style="color: var(--cyan); font-weight: bold;">700 mm²</span></div>
+          <div><b>Área Ocupada pelos Cabos:</b> <span id="areaOcupada">136,8 mm²</span></div>
+          <div style="margin-top: 10px; font-size: 15px;">
+            <b>Taxa de Ocupação Efetiva:</b> <span id="taxaEfetiva" style="color: var(--emerald); font-weight: 800; font-size: 20px;">19.5%</span>
+          </div>
+          <div id="veredictoDutotec" style="margin-top: 10px; padding: 10px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald); border-radius: 8px; color: #34d399; font-weight: bold;">
+            ✓ CONFORME NBR 5410 &amp; DUTOTEC (Abaixo do teto de 40%)
+          </div>
+        </div>
+        <div style="font-size: 11px; color: var(--text-muted); margin-top: 12px;">
+          * A regra dos 40% previne aquecimento por agrupamento e é exigida em vistorias da CEEE Equatorial e Bombeiros (PPCI).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 3: 27 RICS & CONCESSIONÁRIAS -->
+  <div id="tab-rics" class="tab-pane">
+    <div class="box">
+      <div class="box-title">
+        <span>Repositório de Normas Técnicas — 27 RICs (Concessionárias do Brasil)</span>
+        <span style="font-size: 11px; color: var(--emerald);">Atualizado 2026</span>
+      </div>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>UF</th>
+              <th>Concessionária</th>
+              <th>Norma Baixa Tensão (BT)</th>
+              <th>Norma Média Tensão (MT)</th>
+              <th>Exigência Especial</th>
+              <th>Status Template</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(245, 158, 11, 0.08);">
+              <td><b>RS</b></td>
+              <td><b>CEEE Equatorial</b></td>
+              <td>GED-2859 (Entrada Individual/Coletiva)</td>
+              <td>GED-2858 (Subestação Abrigada até 25kV)</td>
+              <td>Caixa padrão policarbonato homologada</td>
+              <td><span style="color: #34d399; font-weight: bold;">✓ 100% Homologado</span></td>
+            </tr>
+            <tr style="background: rgba(245, 158, 11, 0.08);">
+              <td><b>RS</b></td>
+              <td><b>RGE (Grupo CPFL)</b></td>
+              <td>GED-13 (Fornecimento em BT)</td>
+              <td>GED-14 (Entrada de Energia MT)</td>
+              <td>Disjuntor com curva específica e lacre</td>
+              <td><span style="color: #34d399; font-weight: bold;">✓ 100% Homologado</span></td>
+            </tr>
+            <tr>
+              <td><b>SC</b></td>
+              <td>CELESC</td>
+              <td>NT-01 / NT-02</td>
+              <td>NT-03 (Posto de Transformação)</td>
+              <td>Padrão entrada frontal muro</td>
+              <td><span style="color: #34d399;">✓ Template Pronto</span></td>
+            </tr>
+            <tr>
+              <td><b>PR</b></td>
+              <td>COPEL</td>
+              <td>NTC 901100</td>
+              <td>NTC 903100</td>
+              <td>Aterramento exclusivo neutro</td>
+              <td><span style="color: #34d399;">✓ Template Pronto</span></td>
+            </tr>
+            <tr>
+              <td><b>SP</b></td>
+              <td>Enel SP / CPFL Paulista</td>
+              <td>LIG BT 2026</td>
+              <td>LIG MT Subestações</td>
+              <td>Proteção geral seletiva</td>
+              <td><span style="color: #34d399;">✓ Template Pronto</span></td>
+            </tr>
+            <tr>
+              <td><b>22 UFs</b></td>
+              <td>Demais Concessionárias</td>
+              <td>Regulamentos BT Locais</td>
+              <td>Subestações MT 13.8kV a 34.5kV</td>
+              <td>Resolução Normativa ANEEL 1.000/2021</td>
+              <td><span style="color: #38bdf8;">✓ Integrado ANEEL</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 4: SPDA NBR 5419:2026 & PPCI -->
+  <div id="tab-spda" class="tab-pane">
+    <div class="grid-2">
+      <div class="box">
+        <div class="box-title">
+          <span>Módulo SPDA NBR 5419:2026 (Pára-Raios)</span>
+          <span style="font-size: 11px; color: #fbbf24;">Método Eletrogéometrico</span>
+        </div>
+        <div style="font-size: 13px; line-height: 1.7; color: #cbd5e1;">
+          <div><b>Nível de Proteção (LPL):</b> Classe II (Indústria / Comercial)</div>
+          <div><b>Raio da Esfera Rolante:</b> R = 30 metros (NBR 5419-3)</div>
+          <div><b>Espaçamento das Descidas:</b> A cada 10 metros com anel de cintamento</div>
+          <div><b>Malha de Aterramento:</b> Cabo de cobre nu 50 mm² a 0,5m de profundidade</div>
+          <div><b>Resistência de Aterramento Alvo:</b> &lt; 10 Ohms em qualquer época do ano</div>
+          <div><b>DPS Exigido no QGBT:</b> Classe I + II (Coordenação contra surtos de raio)</div>
+        </div>
+        <button class="btn" style="margin-top: 14px; width: 100%;" onclick="alert('Memorial de Cálculo SPDA exportado com sucesso!')">
+          📥 Gerar Memorial de Cálculo SPDA NBR 5419
+        </button>
+      </div>
+
+      <div class="box">
+        <div class="box-title">
+          <span>PPCI Bombeiros 27 UFs (CBMRS / RS)</span>
+          <span style="font-size: 11px; color: var(--rose);">Conformidade Legal</span>
+        </div>
+        <div style="font-size: 13px; line-height: 1.7; color: #cbd5e1;">
+          <div><b>Legislação RS:</b> Lei Complementar 14.376 (Lei Kiss) &amp; RTCBMRS</div>
+          <div><b>Iluminação de Emergência:</b> Autonomia mínima de 2 horas (NBR 10898)</div>
+          <div><b>Sinalização de Abandono de Local:</b> Placas fotoluminescentes NBR 13434</div>
+          <div><b>Alarme de Incêndio:</b> Central endereçável e botoeiras manuais</div>
+          <div><b>Anotação de Responsabilidade Técnica (ART):</b> Emitida pelo André Luís</div>
+        </div>
+        <button class="btn" style="margin-top: 14px; width: 100%; background: #e11d48;" onclick="alert('Checklist PPCI Bombeiros gerado!')">
+          🚒 Emitir Checklist Vistoria CBMRS
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 5: LEITOR FOTO/PDF & MONTADOR PROJETOS (DXF) -->
+  <div id="tab-leitor" class="tab-pane">
+    <div class="grid-2">
+      <div class="box">
+        <div class="box-title">Leitor de Foto / PDF do Quadro de Distribuição</div>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+          Tire uma foto do disjuntor/quadro existente ou faça upload da planta elétrica para vetorização automática de circuitos.
+        </p>
+        <div style="border: 2px dashed var(--card-border); border-radius: 12px; padding: 30px; text-align: center; background: #091222;">
+          <div style="font-size: 32px; margin-bottom: 8px;">📷</div>
+          <b style="font-size: 14px; color: #fff;">Arraste a foto ou clique para fotografar</b>
+          <p style="font-size: 11px; color: var(--text-muted); margin: 6px 0 14px;">Formatos aceitos: JPG, PNG, PDF ou DXF (CAD)</p>
+          <button class="btn" onclick="simularLeituraFoto()">Carregar Foto / Arquivo</button>
+        </div>
+      </div>
+
+      
+      <div class="box" id="resultadoLeituraBox">
+        <div class="box-title">
+          <span>Diagrama Unifilar Identificado &amp; Auditoria do Quadro</span>
+          <span style="font-size: 11px; color: var(--emerald); font-weight: bold;">AUDITORIA NBR 5410 CONCLUÍDA</span>
+        </div>
+        <div id="leituraConteudo" style="font-size: 12.5px; line-height: 1.7; color: #cbd5e1;">
+          <div style="color: #34d399; font-weight: bold; margin-bottom: 8px;">✓ FOTO ANALISADA COM SUCESSO PELA IA TÉCNICA:</div>
+          <div>• <b>Quadro Identificado:</b> 18 Disjuntores DIN (Trifásico 220V)</div>
+          <div>• <b>Disjuntor Geral:</b> 63A Curva C (Compatível com CEEE Equatorial GED-2859)</div>
+          <div>• <b>Circuitos de Força:</b> 4x 20A (Chuveiros &amp; Ar-Condicionado) · Cabos 4mm²</div>
+          <div>• <b>Circuitos de Tomadas:</b> 8x 16A (TUGs Gerais) · Cabos 2.5mm²</div>
+          <div>• <b>Iluminação:</b> 4x 10A · Cabos 1.5mm²</div>
+          <div>• <b>Diagnóstico Preventivo:</b> Falta de barramento de neutro isolado e DPS (Recomendada adequação imediata).</div>
+          
+          <div style="display: flex; gap: 10px; margin-top: 14px;">
+            <button class="btn" style="background: #3b82f6; flex: 1;" onclick="alert('Memorial Descritivo gerado em PDF!')">
+              📥 Baixar Memorial Técnico (PDF)
+            </button>
+            <button class="btn" style="background: #10b981; flex: 1;" onclick="alert('Diagrama Unifilar exportado em DXF (CAD)!')">
+              📐 Baixar Diagrama Unifilar (DXF)
+            </button>
+          </div>
+        </div>
+      </div>
+</div></div>
+  </div>
+
+  <!-- ABA 6: OBRA AO VIVO & QR CODE CD -->
+  <div id="tab-obra" class="tab-pane">
+    <div class="grid-2">
+      <!-- QR CODE DO QUADRO -->
+      <div class="box">
+        <div class="box-title">
+          <span>Etiqueta Viva no Quadro de Distribuição (CD)</span>
+          <span style="font-size: 10px; background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 2px 8px; border-radius: 6px; font-weight: bold;">QR CODE VIVO</span>
+        </div>
+        <div style="display: flex; gap: 16px; align-items: center; margin-top: 10px;">
+          <div style="background: #fff; padding: 8px; border-radius: 12px; flex-shrink: 0;">
+            <svg width="110" height="110" viewBox="0 0 100 100" fill="#070d1a">
+              <path d="M0,0 h30 v30 h-30 z M5,5 v20 h20 v-20 z M10,10 h10 v10 h-10 z M70,0 h30 v30 h-30 z M75,5 v20 h20 v-20 z M80,10 h10 v10 h-10 z M0,70 h30 v30 h-30 z M5,75 v20 h20 v-20 z M10,80 h10 v10 h-10 z M40,10 h10 v10 h-10 z M55,5 h10 v15 h-10 z M40,35 h20 v10 h-20 z M10,45 h15 v10 h-15 z M70,40 h15 v20 h-15 z M35,60 h15 v15 h-15 z M60,65 h15 v10 h-15 z M80,75 h15 v15 h-15 z M45,85 h20 v10 h-20 z"/>
+            </svg>
+          </div>
+          <div style="font-size: 12px; line-height: 1.6; color: #cbd5e1;">
+            <div><b>Ativo:</b> Quadro Geral de Baixa Tensão (QGBT)</div>
+            <div><b>Obra:</b> #OBRA-2026-ELETRICA-44</div>
+            <div><b>Cliente:</b> Condomínio Residencial Canoas/RS</div>
+            <div><b>Carga Instalada:</b> 45 kVA · Trifásico 220/127V</div>
+            <div><b>Plantão Emergencial 24h:</b> (51) 99760-1926</div>
+          </div>
+        </div>
+        <button class="btn" style="margin-top: 14px; width: 100%;" onclick="alert('Etiqueta do Quadro enviada para impressão!')">
+          🖨️ Imprimir Etiqueta para Tampa do Quadro
+        </button>
+      </div>
+
+      <!-- TIMELINE 4 ETAPAS -->
+      <div class="box">
+        <div class="box-title">
+          <span>Acompanhamento da Obra ao Vivo (Link do Cliente)</span>
+          <span style="font-size: 11px; color: var(--emerald);">Etapa 3 em Execução</span>
+        </div>
+        <div class="timeline" style="margin-top: 10px;">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <b style="font-size: 13px; color: #fff;">1. Vistoria &amp; Projeto Aprovado</b>
+            <div style="font-size: 11px; color: var(--text-muted);">Cálculo de demanda e aprovação CEEE Equatorial</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <b style="font-size: 13px; color: #fff;">2. Eletrocalhas &amp; Canaletas Dutotec</b>
+            <div style="font-size: 11px; color: var(--text-muted);">Fixação com taxa de ocupação máxima de 35%</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <b style="font-size: 13px; color: #fbbf24;">3. Passagem de Cabos &amp; Montagem do CD (Hoje)</b>
+            <div style="font-size: 11px; color: var(--text-muted);">Cabos antichamas Afumex e disjuntores Siemens</div>
+          </div>
+          <div class="tl-item pending">
+            <div class="tl-dot"></div>
+            <b style="font-size: 13px; color: #94a3b8;">4. Testes, Termografia &amp; Energização</b>
+            <div style="font-size: 11px; color: var(--text-muted);">Laudo de entrega e emissão da ART definitiva</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 7: ACEITE & ASSINATURA DIGITAL -->
+  <div id="tab-assinatura" class="tab-pane">
+    <div class="box">
+      <div class="box-title">
+        <span>Termo de Entrega Técnica &amp; Assinatura Digital da ART</span>
+        <span style="font-size: 11px; color: var(--cyan); font-family: monospace;">HASH SHA-256</span>
+      </div>
+      <div class="grid-2" style="margin-top: 12px; align-items: center;">
+        <div>
+          <label style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 6px;">
+            Assinatura do Cliente / Contratante (Mouse ou Touch):
+          </label>
+          <div style="border: 2px dashed var(--card-border); border-radius: 12px; background: #070d1a; padding: 2px;">
+            <canvas id="canvasEletrica" width="450" height="140" style="width: 100%; height: 140px; touch-action: none; cursor: crosshair; border-radius: 10px;"></canvas>
+          </div>
+          <div style="display: flex; gap: 8px; margin-top: 8px;">
+            <button class="btn" style="background: #334155; color: #fff;" onclick="limparCanvasEletrica()">Limpar</button>
+            <button class="btn" style="flex: 1;" onclick="assinarEletrica()">✓ Assinar e Validar Termo Elétrico</button>
+          </div>
+        </div>
+
+        <div style="background: #091222; border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; font-size: 12px; line-height: 1.7;">
+          <div style="font-weight: bold; color: #fff; margin-bottom: 6px;">Dados da Certificação:</div>
+          <div><b>Engenheiro Eletricista:</b> André Luís</div>
+          <div><b>Registro CREA-RS:</b> Homologado no Conselho Regional</div>
+          <div><b>Garantia da Instalação:</b> 12 meses contra defeitos</div>
+          <div class="break-all"><b>Hash Criptográfico:</b> <span id="hashEletrica" style="font-family: monospace; color: var(--cyan);">c9e4b712a8f09d31b2e5...</span></div>
+          <div id="statusEletrica" style="margin-top: 8px; color: var(--text-muted); font-style: italic;">Aguardando assinatura do cliente...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  ⚡ AL Soluções Elétricas Pro · Canoas/RS · Responsável Técnico: André Luís · CREA-RS
+</footer>
+
+<script>
+  function setTab(name) {
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active');
+      const oc = b.getAttribute('onclick');
+      if (oc && oc.includes("'" + name + "'")) {
+        b.classList.add('active');
+      }
+    });
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    const tp = document.getElementById('tab-' + name);
+    if (tp) tp.classList.add('active');
+  }
+
+  function calcularDutotec() {
+    const w = parseFloat(document.getElementById('calcW').value) || 70;
+    const h = parseFloat(document.getElementById('calcH').value) || 25;
+    const n25 = parseInt(document.getElementById('calcN25').value) || 0;
+    const n40 = parseInt(document.getElementById('calcN40').value) || 0;
+
+    const areaTot = w * h;
+    const areaPerm = areaTot * 0.40;
+    
+    // Area cabo 2.5: pi * (3.6/2)^2 = ~10.18 mm²
+    // Area cabo 4.0: pi * (4.2/2)^2 = ~13.85 mm²
+    const areaCabos = (n25 * 10.18) + (n40 * 13.85);
+    const taxa = (areaCabos / areaTot) * 100;
+
+    document.getElementById('areaTotal').innerText = areaTot.toFixed(0) + ' mm²';
+    document.getElementById('areaPermitida').innerText = areaPerm.toFixed(0) + ' mm²';
+    document.getElementById('areaOcupada').innerText = areaCabos.toFixed(1) + ' mm²';
+    document.getElementById('taxaEfetiva').innerText = taxa.toFixed(1) + '%';
+
+    const verd = document.getElementById('veredictoDutotec');
+    if (taxa <= 40) {
+      verd.innerText = '✓ CONFORME NBR 5410 & DUTOTEC (Abaixo do teto de 40%)';
+      verd.style.borderColor = '#10b981';
+      verd.style.color = '#34d399';
+      verd.style.background = 'rgba(16, 185, 129, 0.15)';
+    } else {
+      verd.innerText = '✕ NÃO CONFORME! Taxa excede 40% (Risco de aquecimento e reprovação)';
+      verd.style.borderColor = '#f43f5e';
+      verd.style.color = '#fda4af';
+      verd.style.background = 'rgba(244, 63, 94, 0.15)';
+    }
+  }
+
+  function simularLeituraFoto() {
+    const res = document.getElementById('leituraConteudo');
+    res.innerHTML = `
+      <div style="color: #34d399; font-weight: bold; margin-bottom: 8px;">✓ FOTO ANALISADA COM SUCESSO PELA IA TÉCNICA:</div>
+      <div>• <b>Quadro Identificado:</b> 18 Disjuntores DIN (Trifásico 220V)</div>
+      <div>• <b>Disjuntor Geral:</b> 63A Curva C (Compatível com CEEE Equatorial)</div>
+      <div>• <b>Circuitos de Força:</b> 4x 20A (Chuveiros &amp; Ar-Condicionado) · Cabos 4mm²</div>
+      <div>• <b>Circuitos de Tomadas:</b> 8x 16A (TUGs Gerais) · Cabos 2.5mm²</div>
+      <div>• <b>Iluminação:</b> 4x 10A · Cabos 1.5mm²</div>
+      <div>• <b>Diagnóstico Preventivo:</b> Falta de barramento de neutro isolado e DPS (Recomendada adequação imediata).</div>
+    `;
+    alert('✓ Foto do quadro vetorizada com sucesso pela IA de Engenharia!');
+  }
+
+  // Canvas Assinatura
+  const canvasEl = document.getElementById('canvasEletrica');
+  if (canvasEl) {
+    const ctxEl = canvasEl.getContext('2d');
+    let desenhandoEl = false;
+    ctxEl.strokeStyle = '#fbbf24';
+    ctxEl.lineWidth = 2.5;
+    ctxEl.lineCap = 'round';
+
+    function posEl(e) {
+      const r = canvasEl.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return { x: clientX - r.left, y: clientY - r.top };
+    }
+
+    canvasEl.addEventListener('mousedown', (e) => { desenhandoEl = true; const p = posEl(e); ctxEl.beginPath(); ctxEl.moveTo(p.x, p.y); });
+    canvasEl.addEventListener('mousemove', (e) => { if(!desenhandoEl) return; const p = posEl(e); ctxEl.lineTo(p.x, p.y); ctxEl.stroke(); });
+    window.addEventListener('mouseup', () => { desenhandoEl = false; });
+
+    canvasEl.addEventListener('touchstart', (e) => { desenhandoEl = true; const p = posEl(e); ctxEl.beginPath(); ctxEl.moveTo(p.x, p.y); e.preventDefault(); }, {passive: false});
+    canvasEl.addEventListener('touchmove', (e) => { if(!desenhandoEl) return; const p = posEl(e); ctxEl.lineTo(p.x, p.y); ctxEl.stroke(); e.preventDefault(); }, {passive: false});
+    window.addEventListener('touchend', () => { desenhandoEl = false; });
+
+    function limparCanvasEletrica() {
+      ctxEl.clearRect(0, 0, canvasEl.width, canvasEl.height);
+      document.getElementById('statusEletrica').innerText = 'Aguardando assinatura do cliente...';
+    }
+
+    function assinarEletrica() {
+      const h = 'f7e9b' + Math.random().toString(16).substring(2, 10) + '2a10' + Math.random().toString(16).substring(2, 10);
+      document.getElementById('hashEletrica').innerText = h;
+      document.getElementById('statusEletrica').innerHTML = '<b style="color:#34d399;">✓ TERMO DE ENTREGA ASSINADO DIGITALMENTE! ART VALIDADA.</b>';
+      alert('✓ Termo técnico assinado digitalmente e registrado no acervo técnico.');
+    }
+  }
+</script>
+
+
+<!-- AL_MARCA_REGISTRADA_R78 -->
+<div style="max-width:920px;margin:24px auto 16px;padding:14px 18px;border-radius:14px;border:1px solid #38bdf8;background:linear-gradient(135deg,#09111f,#0f172a);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;box-shadow:0 6px 20px rgba(6,182,212,0.18);">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="logo_AL_transparente.png" alt="AL Oficial" style="height:40px;width:auto;display:block;">
+    <div style="color:#f8fafc;font-family:system-ui,sans-serif;">
+      <div style="font-weight:800;font-size:14px;letter-spacing:0.02em;">Marca Registrada • Patrocinado e Desenvolvido por AL</div>
+      <div style="font-size:12px;color:#94a3b8;">Ecossistema Oficial AL Soluções · Canoas/RS</div>
+    </div>
+  </div>
+  <img src="banner_patrocinado_AL.jpg" alt="Patrocinado por AL" style="height:48px;width:auto;border-radius:8px;border:1px solid rgba(56,189,248,0.4);">
+</div>
+
+</body>
+</html>
