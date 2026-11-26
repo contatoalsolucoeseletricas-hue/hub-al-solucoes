@@ -1,0 +1,71 @@
+{
+  "ultima_atualizacao": "26/11/2026 (Varredura Camada 0)",
+  "cidades": [
+    "Porto Alegre",
+    "Canoas",
+    "Esteio",
+    "Sapucaia do Sul",
+    "São Leopoldo",
+    "Nova Santa Rita",
+    "Triunfo"
+  ],
+  "vagas": [],
+  "atalhos": [
+    {
+      "cidade": "Porto Alegre",
+      "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Porto%20Alegre%2C%20RS",
+      "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-porto-alegre-rs/eletricista",
+      "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-porto-alegre-rs.aspx",
+      "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Porto%20Alegre",
+      "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"
+    },
+    {
+      "cidade": "Canoas",
+      "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Canoas%2C%20RS",
+      "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-canoas-rs/eletricista",
+      "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-canoas-rs.aspx",
+      "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Canoas",
+      "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"
+    },
+    {
+      "cidade": "Esteio",
+      "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Esteio%2C%20RS",
+      "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-esteio-rs/eletricista",
+      "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-esteio-rs.aspx",
+      "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Esteio",
+      "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"
+    },
+    {
+      "cidade": "Sapucaia do Sul",
+      "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Sapucaia%20do%20Sul%2C%20RS",
+      "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-sapucaia-do-sul-rs/eletricista",
+      "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-sapucaia-do-sul-rs.aspx",
+      "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Sapucaia%20do%20Sul",
+      "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"
+    },
+    {
+      "cidade": "São Leopoldo",
+      "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=S%C3%A3o%20Leopoldo%2C%20RS",
+      "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-sao-leopoldo-rs/eletricista",
+      "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-sao-leopoldo-rs.aspx",
+      "gupy": "https://portal.gupy.io/job-search/term=eletricista%20S%C3%A3o%20Leopoldo",
+      "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"
+    },
+    {
+      "cidade": "Nova Santa Rita",
+      "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Nova%20Santa%20Rita%2C%20RS",
+      "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-nova-santa-rita-rs/eletricista",
+      "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-nova-santa-rita-rs.aspx",
+      "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Nova%20Santa%20Rita",
+      "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"
+    },
+    {
+      "cidade": "Triunfo",
+      "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Triunfo%2C%20RS",
+      "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-triunfo-rs/eletricista",
+      "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-triunfo-rs.aspx",
+      "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Triunfo",
+      "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"
+    }
+  ]
+}

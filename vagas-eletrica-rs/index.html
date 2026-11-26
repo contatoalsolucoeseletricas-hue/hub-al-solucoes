@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚡ Vigiador de Vagas — Eletricista &amp; Técnico em Elétrica (7 Cidades RS)</title>
+<link rel="icon" type="image/png" href="../favicon_AL.png">
+<style>
+  :root { --bg:#060911; --card:#0f172a; --border:#1e293b; --accent:#38bdf8; --gold:#fbbf24; --green:#10b981; --text:#f8fafc; --muted:#94a3b8; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
+  .wrap { max-width:1100px; margin:0 auto; padding:18px 16px 46px; }
+  .topbar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-bottom:16px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:15px; color:var(--text); text-decoration:none; }
+  .brand img { height:32px; width:auto; }
+  .pill { background:rgba(56,189,248,0.16); border:1px solid rgba(56,189,248,0.45); color:#38bdf8; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+  .hero { background:linear-gradient(145deg,#0b1220,#111827); border:1px solid rgba(56,189,248,0.3); border-radius:14px; padding:18px; margin-top:16px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .hero h1 { margin:0 0 6px; font-size:clamp(20px,3vw,26px); }
+  .hero p { margin:0; color:var(--muted); font-size:13.5px; }
+  .banner-mini { width:180px; border-radius:10px; border:1px solid var(--border); }
+  .filters { margin-top:18px; display:flex; flex-direction:column; gap:10px; }
+  .chip-row { display:flex; gap:8px; flex-wrap:wrap; }
+  .chip { padding:7px 13px; border-radius:8px; border:1px solid rgba(255,255,255,0.14); background:#0f172a; color:#e2e8f0; font-size:12px; font-weight:700; cursor:pointer; }
+  .chip.active { background:#0284c7; border-color:#38bdf8; color:#fff; }
+  .search { width:100%; background:#0f172a; border:1px solid #334155; color:#f8fafc; border-radius:8px; padding:10px 12px; font-size:14px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin-top:16px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; display:flex; flex-direction:column; justify-content:space-between; }
+  .card h3 { margin:0 0 6px; font-size:16px; color:#f8fafc; }
+  .meta { font-size:12px; color:#38bdf8; font-weight:600; margin-bottom:6px; }
+  .sal { display:inline-block; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.4); color:#34d399; font-size:12px; font-weight:700; padding:3px 8px; border-radius:6px; margin-bottom:8px; }
+  .btn { display:inline-block; text-align:center; background:#0284c7; color:#fff; text-decoration:none; padding:9px 12px; border-radius:8px; font-size:13px; font-weight:700; margin-top:10px; }
+  .atalhos { margin-top:28px; background:#0b1220; border:1px solid var(--border); border-radius:12px; padding:16px; }
+  .atalhos h2 { margin:0 0 10px; font-size:16px; color:var(--gold); }
+  .atalho-item { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:8px 0; border-bottom:1px solid #1e293b; flex-wrap:wrap; font-size:13px; }
+  .atalho-links { display:flex; gap:6px; flex-wrap:wrap; }
+  .atalho-links a { background:#1e293b; color:#cbd5e1; text-decoration:none; padding:4px 9px; border-radius:6px; font-size:11.5px; font-weight:600; }
+  .footer-al { margin-top:28px; padding:16px; border-radius:12px; background:linear-gradient(135deg,#090d16,#0f172a); border:1px solid rgba(56,189,248,0.35); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="brand" href="../">
+      <img src="../logo_AL_transparente.png" alt="AL Soluções" loading="lazy" decoding="async">
+      <span>⚡ Vigiador de Vagas Elétrica RS · Hub AL</span>
+    </a>
+    <span class="pill" id="metaUpdate">7 Cidades RS · Camada 0 (R$ 0,00)</span>
+  </div>
+
+  <div class="hero">
+    <div style="flex:1;min-width:240px;">
+      <h1>Vagas de Eletricista &amp; Técnico em Elétrica</h1>
+      <p>Monitoramento diário em Porto Alegre, Canoas, Esteio, Sapucaia do Sul, São Leopoldo, Nova Santa Rita e Triunfo (incluindo Polo Petroquímico).</p>
+    </div>
+    <img class="banner-mini" src="../banner_patrocinado_AL.jpg" alt="AL Soluções" loading="lazy" decoding="async">
+  </div>
+
+  <div class="filters">
+    <div class="chip-row" id="cidadesRow"></div>
+    <div class="chip-row" id="cargosRow"></div>
+    <input id="buscaInput" class="search" type="text" placeholder="Buscar por palavra-chave (ex.: NR-10, Industrial, CFT, Braskem, Salário)...">
+  </div>
+
+  <div id="vagasContainer" class="grid"></div>
+
+  <section class="atalhos">
+    <h2>🔎 Busca Direta Ao Vivo por Cidade (Portais Externos)</h2>
+    <div id="atalhosContainer"></div>
+  </section>
+
+  <footer class="footer-al">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <img src="../logo_AL_transparente.png" alt="AL" style="height:30px;width:auto;" loading="lazy" decoding="async">
+      <div>
+        <div style="font-weight:800;font-size:13px;">Marca Registrada • Patrocinado e Desenvolvido por AL</div>
+        <div style="font-size:12px;color:#94a3b8;">Ecossistema Oficial AL Soluções · Canoas/RS</div>
+      </div>
+    </div>
+    <a href="../" style="color:#38bdf8;font-size:13px;font-weight:700;text-decoration:none;">← Voltar ao Hub Central</a>
+  </footer>
+</div>
+
+<script>
+  window.__DADOS_VAGAS__ = {"ultima_atualizacao": "26/11/2026 (Varredura Camada 0)", "cidades": ["Porto Alegre", "Canoas", "Esteio", "Sapucaia do Sul", "São Leopoldo", "Nova Santa Rita", "Triunfo"], "vagas": [], "atalhos": [{"cidade": "Porto Alegre", "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Porto%20Alegre%2C%20RS", "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-porto-alegre-rs/eletricista", "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-porto-alegre-rs.aspx", "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Porto%20Alegre", "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"}, {"cidade": "Canoas", "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Canoas%2C%20RS", "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-canoas-rs/eletricista", "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-canoas-rs.aspx", "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Canoas", "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"}, {"cidade": "Esteio", "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Esteio%2C%20RS", "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-esteio-rs/eletricista", "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-esteio-rs.aspx", "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Esteio", "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"}, {"cidade": "Sapucaia do Sul", "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Sapucaia%20do%20Sul%2C%20RS", "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-sapucaia-do-sul-rs/eletricista", "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-sapucaia-do-sul-rs.aspx", "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Sapucaia%20do%20Sul", "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"}, {"cidade": "São Leopoldo", "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=S%C3%A3o%20Leopoldo%2C%20RS", "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-sao-leopoldo-rs/eletricista", "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-sao-leopoldo-rs.aspx", "gupy": "https://portal.gupy.io/job-search/term=eletricista%20S%C3%A3o%20Leopoldo", "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"}, {"cidade": "Nova Santa Rita", "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Nova%20Santa%20Rita%2C%20RS", "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-nova-santa-rita-rs/eletricista", "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-nova-santa-rita-rs.aspx", "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Nova%20Santa%20Rita", "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"}, {"cidade": "Triunfo", "indeed": "https://br.indeed.com/jobs?q=Eletricista%20OR%20T%C3%A9cnico%20em%20El%C3%A9trica&l=Triunfo%2C%20RS", "trabalha_brasil": "https://www.trabalhabrasil.com.br/vagas-empregos-em-triunfo-rs/eletricista", "infojobs": "https://www.infojobs.com.br/vagas-de-eletricista-em-triunfo-rs.aspx", "gupy": "https://portal.gupy.io/job-search/term=eletricista%20Triunfo", "sine_rs": "https://fgtas.rs.gov.br/agencias-fgtas-sine"}]};
+  let CIDADE_ATIVA = "Todas";
+  let CARGO_ATIVO = "Todos";
+
+  function render() {
+    const D = window.__DADOS_VAGAS__;
+    document.getElementById("metaUpdate").textContent = `Atualizado: ${D.ultima_atualizacao || "26/11/2026"}`;
+    const cidades = ["Todas", ...(D.cidades || [])];
+    document.getElementById("cidadesRow").innerHTML = cidades.map(c =>
+      `<button class="chip ${CIDADE_ATIVA===c?'active':''}" onclick="CIDADE_ATIVA='${c}';render();">${c}</button>`
+    ).join("");
+    const cargos = ["Todos", "Eletricista", "Técnico em Elétrica"];
+    document.getElementById("cargosRow").innerHTML = cargos.map(cg =>
+      `<button class="chip ${CARGO_ATIVO===cg?'active':''}" onclick="CARGO_ATIVO='${cg}';render();">${cg}</button>`
+    ).join("");
+
+    const termo = (document.getElementById("buscaInput").value || "").toLowerCase();
+    const lista = (D.vagas || []).filter(v => {
+      if (CIDADE_ATIVA !== "Todas" && v.cidade !== CIDADE_ATIVA) return false;
+      if (CARGO_ATIVO !== "Todos" && v.cargo_tipo !== CARGO_ATIVO) return false;
+      if (termo && !`${v.titulo} ${v.empresa} ${v.cidade} ${v.salario}`.toLowerCase().includes(termo)) return false;
+      return true;
+    });
+
+    const box = document.getElementById("vagasContainer");
+    if (!lista.length) {
+      box.innerHTML = `<div class="card" style="grid-column:1/-1;color:#94a3b8;">Nenhuma vaga raspada exibida para este filtro hoje (regra Zero Maquiagem: não inventamos vagas ou salários). Use os atalhos diretos abaixo para consulta ao vivo nos portais.</div>`;
+    } else {
+      box.innerHTML = lista.map(v => `
+        <div class="card">
+          <div>
+            <h3>${v.titulo}</h3>
+            <div class="meta">🏢 ${v.empresa} · 📍 ${v.cidade}</div>
+            <div class="sal">💰 ${v.salario || "A combinar"}</div>
+            <div style="font-size:11px;color:#94a3b8;">📅 Encontrado em: ${v.data_encontrado || "26/11/2026"} · Fonte: ${v.portal || "Portal"}</div>
+          </div>
+          <a class="btn" href="${v.link}" target="_blank" rel="noopener">Candidatar-se na Vaga Real</a>
+        </div>
+      `).join("");
+    }
+
+    document.getElementById("atalhosContainer").innerHTML = (D.atalhos || []).map(a => `
+      <div class="atalho-item">
+        <strong>📍 ${a.cidade}</strong>
+        <div class="atalho-links">
+          <a href="${a.indeed}" target="_blank" rel="noopener">Indeed</a>
+          <a href="${a.trabalha_brasil}" target="_blank" rel="noopener">Trabalha Brasil</a>
+          <a href="${a.infojobs}" target="_blank" rel="noopener">InfoJobs</a>
+          <a href="${a.gupy}" target="_blank" rel="noopener">Gupy</a>
+          <a href="${a.sine_rs}" target="_blank" rel="noopener">Sine RS</a>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  document.getElementById("buscaInput").addEventListener("input", render);
+  fetch("dados_vagas.json?v=" + Date.now()).then(r => r.json()).then(d => {
+    window.__DADOS_VAGAS__ = d;
+    render();
+  }).catch(() => render());
+  render();
+</script>
+</body>
+</html>
