@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AL AI Cockpit — R$ 0,00 em API · Roda Liso em 4 GB RAM</title>
+<link rel="icon" type="image/png" href="../favicon_AL.png">
+<style>
+  :root { --bg:#060911; --card:#0f172a; --border:#1e293b; --accent:#38bdf8; --gold:#fbbf24; --green:#10b981; --text:#f8fafc; --muted:#94a3b8; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+  .wrap { max-width:1040px; margin:0 auto; padding:20px 16px 48px; }
+  .topbar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0 18px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:15px; color:var(--text); text-decoration:none; }
+  .brand img { height:34px; width:auto; }
+  .pill { background:rgba(16,185,129,0.16); border:1px solid rgba(16,185,129,0.45); color:#34d399; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+  .hero { background:linear-gradient(145deg,#0b1220,#111827); border:1px solid rgba(56,189,248,0.35); border-radius:16px; padding:26px 22px; margin-top:20px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:20px; align-items:center; }
+  @media (max-width:760px){ .hero { grid-template-columns:1fr; padding:20px 16px; } }
+  .hero h1 { margin:0 0 12px; font-size:clamp(22px,3.6vw,34px); line-height:1.18; }
+  .hero p { margin:0 0 18px; color:#cbd5e1; font-size:15px; }
+  .cta { display:inline-block; background:linear-gradient(135deg,#0284c7,#0ea5e9); color:#fff; text-decoration:none; font-weight:800; padding:14px 22px; border-radius:10px; font-size:15px; box-shadow:0 8px 24px rgba(14,165,233,0.3); cursor:pointer; border:none; }
+  .cta-sub { font-size:12px; color:var(--muted); margin-top:8px; }
+  .hero-banner { width:100%; border-radius:12px; border:1px solid var(--border); display:block; }
+  h2 { font-size:21px; margin:34px 0 14px; color:var(--accent); }
+  .grid-4 { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; }
+  .card h3 { margin:0 0 8px; font-size:16px; color:#f8fafc; }
+  .card p { margin:0; font-size:13.5px; color:var(--muted); }
+  .compare { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+  .cmp-bad { border-color:rgba(239,68,68,0.35); }
+  .cmp-good { border-color:rgba(16,185,129,0.5); background:linear-gradient(160deg,#0f172a,#071a18); }
+  .faq details { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px 16px; margin-bottom:10px; }
+  .faq summary { font-weight:700; cursor:pointer; font-size:14.5px; }
+  .faq p { margin:8px 0 0; font-size:13.5px; color:var(--muted); }
+  .footer-al { margin-top:38px; padding:16px 18px; border-radius:12px; background:linear-gradient(135deg,#090d16,#0f172a); border:1px solid rgba(56,189,248,0.35); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="brand" href="../">
+      <img src="../logo_AL_transparente.png" alt="AL Soluções" loading="lazy" decoding="async">
+      <span>AL AI Cockpit · Hub Central AL</span>
+    </a>
+    <span class="pill">R$ 0,00 em API · 100% Legal · Leve 4 GB RAM</span>
+  </div>
+
+  <section class="hero">
+    <div>
+      <h1>Comande IAs de Ponta com R$ 0,00 em API — Roda Liso até em Notebook de 4 GB de RAM</h1>
+      <p>6 provedores gratuitos em cascata automática (Gemini, Groq, Cerebras, GitHub Models, NVIDIA NIM e OpenRouter Free), Instalador 1-Clique Windows, Pacote de Agentes &amp; Skills em PT-BR e Economia Real de Cota.</p>
+      <button class="cta" onclick="abrirCheckoutPix()">Comprar via PIX — Acesso Imediato</button>
+      <div class="cta-sub">Pagamento único · Sem mensalidade de API · Suas chaves no seu computador</div>
+    </div>
+    <div>
+      <img class="hero-banner" src="../banner_patrocinado_AL.jpg" alt="Marca Registrada AL Soluções" loading="lazy" decoding="async">
+    </div>
+  </section>
+
+  <h2>Comparativo Honesto</h2>
+  <div class="compare">
+    <div class="card cmp-bad">
+      <h3>Assinaturas Pagas de IA (~R$ 500+/mês)</h3>
+      <p>Cobrança recorrente em dólar, limite rígido por plataforma e dependência de um único provedor quando a cota acaba.</p>
+    </div>
+    <div class="card cmp-good">
+      <h3>AL AI Cockpit (Pagamento Único + APIs Gratuitas)</h3>
+      <p>Você usa suas próprias chaves gratuitas oficiais com failover automático entre 6 provedores e consumo mínimo de RAM no Windows.</p>
+    </div>
+  </div>
+
+  <h2>4 Pilares do AL AI Cockpit</h2>
+  <div class="grid-4">
+    <div class="card">
+      <h3>1. Check-Lock Real</h3>
+      <p>Instalador 1-clique em PowerShell + .bat UTF-8 que valida Python, Git, conectividade e RAM livre antes de iniciar.</p>
+    </div>
+    <div class="card">
+      <h3>2. Cascata 6 APIs Grátis</h3>
+      <p>Se um provedor bater limite ou oscilar, o roteador passa na hora para o próximo sem interromper seu trabalho.</p>
+    </div>
+    <div class="card">
+      <h3>3. Leve em 4 GB RAM</h3>
+      <p>Feito em Python puro e HTML local enxuto. Roda fluido sem precisar baixar modelos gigantes nem travar o notebook.</p>
+    </div>
+    <div class="card">
+      <h3>4. Skills &amp; Agentes PT-BR</h3>
+      <p>Templates prontos de economia de tokens, copy PIX, revisão cirúrgica de código e atendimento profissional.</p>
+    </div>
+  </div>
+
+  <h2>Perguntas Frequentes (FAQ)</h2>
+  <div class="faq">
+    <details open>
+      <summary>Como funciona o custo R$ 0,00 em API?</summary>
+      <p>Você recebe um guia rápido de 3 minutos para gerar suas próprias chaves gratuitas oficiais (Google AI Studio, Groq, Cerebras, GitHub, NVIDIA Build e OpenRouter Free). Nenhuma chave pessoal de terceiros vai no pacote.</p>
+    </details>
+    <details>
+      <summary>Funciona em notebook antigo com 4 GB de RAM?</summary>
+      <p>Sim. Todo o núcleo roda em Python padrão sem Ollama pesado ou containers, consumindo o mínimo possível de memória.</p>
+    </details>
+    <details>
+      <summary>É 100% legal e seguro?</summary>
+      <p>Sim. 100% código próprio usando apenas APIs oficiais e suas próprias credenciais gravadas localmente no seu <code>.env</code>.</p>
+    </details>
+  </div>
+
+  <footer class="footer-al">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <img src="../logo_AL_transparente.png" alt="AL" style="height:32px;width:auto;" loading="lazy" decoding="async">
+      <div>
+        <div style="font-weight:800;font-size:13px;">Marca Registrada • Patrocinado e Desenvolvido por AL</div>
+        <div style="font-size:12px;color:#94a3b8;">Ecossistema Oficial AL Soluções · Canoas/RS</div>
+      </div>
+    </div>
+    <a href="../" style="color:#38bdf8;font-size:13px;font-weight:700;text-decoration:none;">← Voltar ao Hub Central</a>
+  </footer>
+</div>
+
+<script>
+  window.AL_CHECKOUT_CONFIG = window.AL_CHECKOUT_CONFIG || {
+    modo: "whatsapp_ou_checkout",
+    urlCheckout: "",
+    mensagem: "Ola! Quero adquirir o AL AI Cockpit (Pagamento Unico PIX)."
+  };
+  function abrirCheckoutPix() {
+    const cfg = window.AL_CHECKOUT_CONFIG;
+    if (cfg.urlCheckout) {
+      window.open(cfg.urlCheckout, "_blank", "noopener");
+      return;
+    }
+    alert("Checkout PIX configurado pelo administrador em window.AL_CHECKOUT_CONFIG.urlCheckout.");
+  }
+</script>
+</body>
+</html>
