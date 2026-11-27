@@ -1,6 +1,6 @@
 {
-  "ultima_atualizacao": "26/11/2026 (Varredura Camada 0)",
-  "data_hoje_iso": "2026-11-26",
+  "ultima_atualizacao": "27/11/2026 (Varredura Camada 0)",
+  "data_hoje_iso": "2026-11-27",
   "cidades": [
     "Porto Alegre",
     "Canoas",
@@ -11,32 +11,19 @@
     "Triunfo"
   ],
   "por_fonte": {
-    "InfoJobs": 179,
+    "InfoJobs": 159,
     "BNE": 140
   },
   "por_cidade": {
-    "Porto Alegre": 27,
-    "Canoas": 18,
+    "Porto Alegre": 19,
+    "Canoas": 16,
     "Esteio": 8,
     "Sapucaia do Sul": 8,
-    "São Leopoldo": 4,
+    "São Leopoldo": 3,
     "Nova Santa Rita": 4,
     "Triunfo": 1
   },
   "vagas": [
-    {
-      "titulo": "Mecânico De Manutenção De Ar-Condicionado",
-      "cargo_tipo": "Eletricista",
-      "empresa": "EQS",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "Porto Alegre",
-      "modalidade": "Presencial",
-      "salario": "R$ 2.883,00",
-      "publishedDate": "2026-11-26",
-      "data_encontrado": "26/11/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-mecanico-manutencao-ar-condicionado-em-rio-grande-do-sul__12256420.aspx"
-    },
     {
       "titulo": "Vaga De Eletricista",
       "cargo_tipo": "Eletricista",
@@ -49,19 +36,6 @@
       "publishedDate": "2026-11-26",
       "data_encontrado": "26/11/2026",
       "link": "https://www.bne.com.br/vaga-de-emprego-na-area-manutencao-em-porto-alegre-rs/eletricista/6250252"
-    },
-    {
-      "titulo": "Mecânico De Manutenção De Ar-Condicionado",
-      "cargo_tipo": "Eletricista",
-      "empresa": "EQS",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "Canoas",
-      "modalidade": "Presencial",
-      "salario": "R$ 2.883,00",
-      "publishedDate": "2026-11-26",
-      "data_encontrado": "26/11/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-mecanico-manutencao-ar-condicionado-em-rio-grande-do-sul__12254598.aspx"
     },
     {
       "titulo": "Vaga De Eletricista",
@@ -168,19 +142,6 @@
       "link": "https://www.bne.com.br/vaga-de-emprego-na-area-manutencao-em-sapucaia-do-sul-rs/eletricista-de-manutencao/5852407"
     },
     {
-      "titulo": "Mecânico De Manutenção De Ar-Condicionado",
-      "cargo_tipo": "Eletricista",
-      "empresa": "EQS",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "São Leopoldo",
-      "modalidade": "Presencial",
-      "salario": "R$ 2.883,00",
-      "publishedDate": "2026-11-26",
-      "data_encontrado": "26/11/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-mecanico-manutencao-ar-condicionado-em-rio-grande-do-sul__12254596.aspx"
-    },
-    {
       "titulo": "Vaga De Eletricista",
       "cargo_tipo": "Eletricista",
       "empresa": "BNE Empregos",
@@ -272,19 +233,6 @@
       "link": "https://www.infojobs.com.br/vaga-de-engenheiro-eletricista-comissionamento-em-__12235728.aspx"
     },
     {
-      "titulo": "Meio Oficial De Manutenção - Porto Alegre/RS",
-      "cargo_tipo": "Eletricista",
-      "empresa": "Brasanitas",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "Porto Alegre",
-      "modalidade": "Presencial",
-      "salario": "R$ 1.808,00",
-      "publishedDate": "2026-11-18",
-      "data_encontrado": "18/11/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-meio-oficial-manutencao-porto-alegrers-em-rio-grande-do-sul__12231443.aspx"
-    },
-    {
       "titulo": "Técnico Eletrotécnico",
       "cargo_tipo": "Técnico em Elétrica",
       "empresa": "EQS",
@@ -311,19 +259,6 @@
       "link": "https://www.infojobs.com.br/vaga-de-eletromecanico-manutencao-em-rio-grande-do-sul__12221815.aspx"
     },
     {
-      "titulo": "Parceiro Técnico – Oficial De Manutenção Predial",
-      "cargo_tipo": "Técnico em Elétrica",
-      "empresa": "Empresa",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "Porto Alegre",
-      "modalidade": "Presencial",
-      "salario": "R$ 4.000,00",
-      "publishedDate": "2026-11-12",
-      "data_encontrado": "12/11/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-parceiro-tecnico-oficial-manutencao-predial-em-rio-grande-do-sul__12214844.aspx"
-    },
-    {
       "titulo": "Eletricista",
       "cargo_tipo": "Eletricista",
       "empresa": "WB",
@@ -335,19 +270,6 @@
       "publishedDate": "2026-11-10",
       "data_encontrado": "10/11/2026",
       "link": "https://www.infojobs.com.br/vaga-de-eletricista-em-rio-grande-do-sul__12205577.aspx"
-    },
-    {
-      "titulo": "40212 - ASSISTENTE DE SERVIÇOS II - MANUTENÇÃO (EXCLUSIVA PCD)",
-      "cargo_tipo": "Eletricista",
-      "empresa": "FIERGS",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "Porto Alegre",
-      "modalidade": "Presencial",
-      "salario": "R$ 2.825,00",
-      "publishedDate": "2026-11-09",
-      "data_encontrado": "09/11/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-40212-assistente-servicos-ii-manutencao-exclusiva-pcd-em-rio-grande-do-sul__12199221.aspx"
     },
     {
       "titulo": "ELETRICISTA",
@@ -480,19 +402,6 @@
       "link": "https://www.infojobs.com.br/vaga-de-235-eletricista-em-__12161311.aspx"
     },
     {
-      "titulo": "Oficial De Manutenção Generalista",
-      "cargo_tipo": "Eletricista",
-      "empresa": "Grupo",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "Nova Santa Rita",
-      "modalidade": "Presencial",
-      "salario": "R$ 2.680,00",
-      "publishedDate": "2026-10-26",
-      "data_encontrado": "26/10/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-oficial-manutencao-generalista-em-rio-grande-do-sul__12155885.aspx"
-    },
-    {
       "titulo": "Eletricista De Manutenção Industrial",
       "cargo_tipo": "Eletricista",
       "empresa": "Recoplast",
@@ -532,19 +441,6 @@
       "link": "https://www.infojobs.com.br/vaga-de-ajudante-eletricista-em-rio-grande-do-sul__12134249.aspx"
     },
     {
-      "titulo": "Auxiliar De Manutenção E Serviços Gerais",
-      "cargo_tipo": "Eletricista",
-      "empresa": "RHF Cachoeirinha/RS",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "Porto Alegre",
-      "modalidade": "Presencial",
-      "salario": "A combinar",
-      "publishedDate": "2026-10-20",
-      "data_encontrado": "20/10/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-auxiliar-manutencao-servicos-gerais-em-rio-grande-do-sul__12135720.aspx"
-    },
-    {
       "titulo": "Eletromecânico De Manutenção",
       "cargo_tipo": "Eletricista",
       "empresa": "ATHCO",
@@ -569,19 +465,6 @@
       "publishedDate": "2026-10-20",
       "data_encontrado": "20/10/2026",
       "link": "https://www.infojobs.com.br/vaga-de-eletricista-manutencao-industrial-em-rio-grande-do-sul__11707333.aspx"
-    },
-    {
-      "titulo": "Analista De Manutenção Predial - Interno",
-      "cargo_tipo": "Eletricista",
-      "empresa": "TDA CONSTRUÇÕES E INSTALAÇÕES ELETRICAS",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "Porto Alegre",
-      "modalidade": "Presencial",
-      "salario": "R$ 3.701,00",
-      "publishedDate": "2026-10-15",
-      "data_encontrado": "15/10/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-analista-manutencao-predial-interno-em-rio-grande-do-sul__12120068.aspx"
     },
     {
       "titulo": "Eletricista De Linha De Transmissão",
@@ -701,19 +584,6 @@
       "link": "https://www.infojobs.com.br/vaga-de-eletricista-industrial-em-rio-grande-do-sul__12066827.aspx"
     },
     {
-      "titulo": "Técnico De Manutenção #1296",
-      "cargo_tipo": "Técnico em Elétrica",
-      "empresa": "RHF PORTO ALEGRE/Moinhos de Vento -",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "Porto Alegre",
-      "modalidade": "Presencial",
-      "salario": "R$ 3.975,00",
-      "publishedDate": "2026-09-29",
-      "data_encontrado": "29/09/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-tecnico-manutencao-1296-em-rio-grande-do-sul__12068642.aspx"
-    },
-    {
       "titulo": "Eletricista Automotivo",
       "cargo_tipo": "Eletricista",
       "empresa": "MUNDIAL",
@@ -753,19 +623,6 @@
       "link": "https://www.infojobs.com.br/vaga-de-eletricista-eletrotecnico-em-rio-grande-do-sul__12054333.aspx"
     },
     {
-      "titulo": "Inspetor De Manutenção",
-      "cargo_tipo": "Eletricista",
-      "empresa": "GRUPO",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "Porto Alegre",
-      "modalidade": "Presencial",
-      "salario": "R$ 2.200,00",
-      "publishedDate": "2026-09-25",
-      "data_encontrado": "25/09/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-inspetor-manutencao-em-rio-grande-do-sul__11726207.aspx"
-    },
-    {
       "titulo": "TÉCNICO ELETROTÉCNICO PLENO",
       "cargo_tipo": "Técnico em Elétrica",
       "empresa": "POCAHY &",
@@ -777,19 +634,6 @@
       "publishedDate": "2026-09-22",
       "data_encontrado": "22/09/2026",
       "link": "https://www.infojobs.com.br/vaga-de-tecnico-eletrotecnico-pleno-em-rio-grande-do-sul__12041059.aspx"
-    },
-    {
-      "titulo": "Gerente Manutenção",
-      "cargo_tipo": "Eletricista",
-      "empresa": "Empresa",
-      "portal": "InfoJobs",
-      "portal_pago": false,
-      "cidade": "Canoas",
-      "modalidade": "Híbrido",
-      "salario": "A combinar",
-      "publishedDate": "2026-09-18",
-      "data_encontrado": "18/09/2026",
-      "link": "https://www.infojobs.com.br/vaga-de-gerente-manutencao-em-__12032020.aspx"
     },
     {
       "titulo": "Engenheiro Eletricista",
@@ -816,6 +660,19 @@
       "publishedDate": "2026-09-15",
       "data_encontrado": "15/09/2026",
       "link": "https://www.infojobs.com.br/vaga-de-eletricista-industrial-em-__12016070.aspx"
+    },
+    {
+      "titulo": "ELETROMECANICO - Santa Rita",
+      "cargo_tipo": "Eletricista",
+      "empresa": "Servtec",
+      "portal": "InfoJobs",
+      "portal_pago": false,
+      "cidade": "Nova Santa Rita",
+      "modalidade": "Presencial",
+      "salario": "R$ 2.596,00",
+      "publishedDate": "2026-09-15",
+      "data_encontrado": "15/09/2026",
+      "link": "https://www.infojobs.com.br/vaga-de-eletromecanico-santa-rita-em-rio-grande-do-sul__12019122.aspx"
     },
     {
       "titulo": "Eletricista/ Refrigeração",
