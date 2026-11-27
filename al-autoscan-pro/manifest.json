@@ -1,0 +1,9 @@
+{
+  "name": "AL AutoScan Pro — AL Soluções",
+  "short_name": "AL AutoScan",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#090e17",
+  "theme_color": "#0ea5e9",
+  "description": "Scanner Automotivo Multimarcas OBD-II + IA + Laudo Pré-Compra Antifraude (Custo R$ 0,00)"
+}

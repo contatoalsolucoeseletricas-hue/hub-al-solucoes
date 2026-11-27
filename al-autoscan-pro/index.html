@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AL AutoScan Pro — Scanner Automotivo OBD-II + IA | AL Soluções</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="hdr">
+    <div class="brand">
+      <div class="al-metal" aria-label="Marca Registrada Metálica AL">AL®</div>
+      <div>
+        <h1>AL AutoScan Pro — Scanner Multimarcas OBD-II + IA</h1>
+        <div class="sub">AL Soluções | Frota Flex BR | Antifraude Pré-Compra | Custo Operacional R$ 0,00</div>
+      </div>
+    </div>
+    <div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" onclick="conectarSerial()">🔌 Web Serial (USB)</button>
+      <button class="btn" onclick="conectarBLE()">📶 Web Bluetooth (BLE)</button>
+    </div>
+  </header>
+
+  <nav class="tabs no-print">
+    <button class="btn active" id="tab-scanner" onclick="mudarAba('scanner')">🔍 Scanner & Topologia</button>
+    <button class="btn" id="tab-laudo" onclick="mudarAba('laudo')">📄 Laudo Pré-Compra</button>
+    <button class="btn" id="tab-comparativo" onclick="mudarAba('comparativo')">📊 Matriz 43 Scanners</button>
+    <button class="btn" id="tab-adaptadores" onclick="mudarAba('adaptadores')">🔧 Adaptadores & Licenças</button>
+  </nav>
+
+  <section id="sec-scanner">
+    <div class="card no-print" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-pri" onclick="carregarPerfil('saudavel')">Perfil 1: Onix 1.0 Turbo (Saudável)</button>
+        <button class="btn" onclick="carregarPerfil('falha_flex')">Perfil 2: Gol G6 1.6 (Falha P0171)</button>
+        <button class="btn" onclick="carregarPerfil('maquiagem')">Perfil 3: HB20 1.6 (Maquiagem)</button>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center">
+        <input class="input" id="dtc-input" placeholder="Consultar DTC (ex: P0300)">
+        <button class="btn" onclick="consultarDtcAvulso()">Traduzir Flex BR</button>
+      </div>
+    </div>
+
+    <div id="hw-status" class="sub" style="margin-bottom:10px">Modo Demonstração Offline ativo (--demo) | Somente leitura segura</div>
+
+    <div class="grid">
+      <div class="card"><div class="sub">Veículo / Protocolo</div><div class="kpi" id="kpi-veic" style="font-size:16px">—</div></div>
+      <div class="card"><div class="sub">Score Pré-Compra</div><div class="kpi" id="kpi-score">—</div></div>
+      <div class="card"><div class="sub">Fuel Trim (STFT / LTFT)</div><div class="kpi" id="kpi-trim">—</div></div>
+      <div class="card"><div class="sub">Pós-Reset (PID 01 31)</div><div class="kpi" id="kpi-reset">—</div></div>
+    </div>
+
+    <div class="card">
+      <strong>Mapa Visual de Topologia de Módulos (Estilo Autel MaxiSys Ultra)</strong>
+      <div class="topo" id="topo-grid"></div>
+    </div>
+
+    <div class="card">
+      <strong>Diagnóstico Flex BR & Roteiro com Multímetro AL (Estilo Bosch ESI[tronic])</strong>
+      <div id="dtc-box" style="margin-top:8px"></div>
+    </div>
+  </section>
+
+  <section id="sec-laudo" class="hide">
+    <div class="card" id="laudo-preview"></div>
+    <div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-pri" onclick="window.print()">🖨️ Imprimir / Salvar PDF</button>
+      <button class="btn btn-wa" onclick="exportarEspecialista()">📲 Enviar Sessão p/ Especialista (WhatsApp/JSON)</button>
+    </div>
+  </section>
+
+  <section id="sec-comparativo" class="hide">
+    <div class="card">
+      <strong>Matriz Comparativa de Mercado (43 Referências: 20 Nacionais + 23 Importados)</strong>
+      <div class="tbl-wrap" style="margin-top:10px">
+        <table>
+          <thead><tr><th>Solução / Ferramenta</th><th>Origem / Perfil</th><th>Custo Hardware / Licença</th><th>Tradução PT-BR Flex</th><th>Análise Antifraude</th></tr></thead>
+          <tbody>
+            <tr><td><strong>AL® AutoScan Pro</strong></td><td>Nacional (AL Soluções)</td><td>R$ 0,00 (Open Hardware)</td><td>Nativa 100% Flex BR</td><td>Algoritmo Integrado</td></tr>
+            <tr><td>Raven Scanner 3 Pro Scope / Bosch KTS 590</td><td>Nacional / Alemã</td><td>R$ 14.000 – R$ 25.000 + Anuidade</td><td>Sim</td><td>Parcial (Manual)</td></tr>
+            <tr><td>Autel MaxiSys Ultra / Launch X431 PAD IX</td><td>Importado Topo de Linha</td><td>R$ 18.000 – R$ 28.000 + Assinatura</td><td>Sim</td><td>Parcial (Manual)</td></tr>
+            <tr><td>Dongle Importado Comercial A</td><td>Importado</td><td>US$ 99.00 + Assinatura</td><td>Não (Inglês)</td><td>Limitada</td></tr>
+            <tr><td>App Genérico OBD2 Gratuito</td><td>Importado</td><td>R$ 0,00 (Com anúncios)</td><td>Genérica / Incorreta</td><td>Não</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec-adaptadores" class="hide">
+    <div class="card">
+      <strong>Guia Técnico de Adaptadores Recomendados</strong>
+      <ul>
+        <li><strong>Recomendado:</strong> Adaptadores ELM327 com chip real <code>PIC18F25K80</code> (firmware 1.5), Veepeak OBDCheck BLE+ ou OBDLink MX+.</li>
+        <li><strong>Restrição de Uso:</strong> Adaptadores v2.1 genéricos apresentam erros em comandos AT estendidos e instabilidade em barramentos CAN rápidos.</li>
+        <li><strong>Camadas Futuras (Open-Source):</strong> Arquitetura pronta para CANable (gs_usb), WiCAN (ESP32-S3), J2534 PassThru, UDS (ISO 14229) e J1939.</li>
+      </ul>
+      <div class="warn-box">
+        ⚠️ <strong>Aviso de Limitações Técnicas:</strong> Scanners OBD-II leem exclusivamente dados eletrônicos da ECU motor/transmissão, não identificando desgastes mecânicos estruturais (suspensão, embreagem mecânica ou vazamentos físicos). Veículos Stellantis pós-2018 com módulo SGW exigem cabo bypass.
+      </div>
+    </div>
+    <div class="card">
+      <strong>Sobre & Licenças Abertas (Camada 3)</strong>
+      <p class="sub">Compatível com perfis JSON do projeto <a href="https://github.com/obdb" target="_blank" style="color:var(--acc)">OBDb (Open Vehicle Database)</a> sob licença <strong>CC BY-SA 4.0</strong>, sinais <code>.DBC</code> (commaai/opendbc) e importação Torque CSV. Operação estrita somente leitura.</p>
+    </div>
+  </section>
+</div>
+<script src="./app.js"></script>
+</body>
+</html>
